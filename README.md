@@ -1,6 +1,6 @@
 # Send by Gmail
 
-**Send the current page by Gmail with the page title, selected text, and URL—instantly.**
+**Send the current page by Gmail with the page title, selected text, and URL—easily.**
 
 ---
 
@@ -27,14 +27,9 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ## 🛠️ Installation
 
-1. **From Mozilla Add-ons (recommended):**
+1. **From Mozilla Add-ons:**
    - Visit [Send by Gmail on AMO](https://addons.mozilla.org/) *(replace with your actual link)*.
    - Click **Add to Firefox**.
-
-2. **Manual installation (for developers):**
-   - Download or clone this repository.
-   - Go to `about:debugging` in Firefox.
-   - Click **Load Temporary Add-on** and select the `manifest.json` file from this project.
 
 ---
 
@@ -87,6 +82,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 - The extension cannot access special pages (e.g., `about:`, `addons.mozilla.org`).
 - Gmail must be accessible in your browser for the popup to work.
 - Only works with Gmail.
+- The amount of selected text you can include is limited by the maximum URL length supported by browsers and Gmail. Extremely large selections may be truncated or fail to open in Gmail.
 
 ---
 
@@ -106,12 +102,6 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 🛡️ License
 
 © John Navas 2025. All Rights Reserved.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
