@@ -13,16 +13,9 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "management"
   ],
-  "commands": {
-    "send-by-gmail": {
-      "suggested_key": {
-        "default": "Ctrl+Alt+G"
-      },
-      "description": "Send the current page by Gmail"
-    }
-  },
   "background": {
     "scripts": [
       "background.js"
@@ -40,6 +33,14 @@
     "default_title": "Send by Gmail",
     "default_popup": "popup.html"
   },
+  "commands": {
+    "open-send-by-gmail-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+S"
+      },
+      "description": "Open the Send by Gmail popup"
+    }
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "Send-by-Gmail-JNavas2@github.com"
@@ -48,8 +49,5 @@
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
-  },
-  "web_accessible_resources": [
-    "onboarding.html"
-  ]
+  }
 }

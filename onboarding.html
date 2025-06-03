@@ -1,29 +1,93 @@
 <!--
   onboarding.html
   © John Navas 2025, All Rights Reserved
-  This is the onboarding (welcome) page for the "Send by Gmail" Firefox extension.
-  It provides users with a brief introduction and quick access to Options and Remove Extension actions.
 -->
-
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta charset="UTF-8">
     <title>Welcome to Send by Gmail</title>
-    <!-- Link to the onboarding script -->
+    <style>
+        body {
+            font-family: system-ui, Arial, sans-serif;
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 24px;
+            background: #fafafa;
+            color: #222;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(60,60,60,0.08);
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .header img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000000;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+        p {
+            font-size: 1rem;
+            margin-bottom: 32px;
+            color: #333;
+        }
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        button {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 6px rgba(60,60,60,0.07);
+        }
+        #options {
+            background: #43a047;
+            color: #fff;
+        }
+        #options:hover {
+            background: #388e3c;
+        }
+        #remove {
+            background: #e53935;
+            color: #fff;
+        }
+        #remove:hover {
+            background: #b71c1c;
+        }
+    </style>
     <script src="onboarding.js"></script>
 </head>
-
 <body>
-    <h1>Welcome to Send by Gmail!</h1>
+    <div class="header">
+        <img src="images/icon-64.png" alt="Send by Gmail Icon" />
+        <h1>Welcome to Send by Gmail</h1>
+    </div>
     <p>
         This extension lets you quickly send the current page by Gmail with its title,
-        selected text, and URL. Use the button below to customize your subject prefix or remove the extension.
+        selected text, and URL.<br>
+        Use the buttons below to customize your subject prefix or remove the extension.
     </p>
-    <!-- Button to open the Options page -->
-    <button id="options">Options</button>
-    <!-- Button to remove the extension -->
-    <button id="remove">Remove Extension</button>
+    <div class="button-row">
+        <button id="options">Options</button>
+        <button id="remove">Remove Extension</button>
+    </div>
 </body>
-
 </html>

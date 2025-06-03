@@ -18,7 +18,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 🎉 Features
 
 - **One-click sharing:** Click the extension button to open Gmail with the page details pre-filled.
-- **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> (customizable) for even faster sharing.
+- **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd> (customizable) to open the extension popup.
 - **Selected text support:** Highlight text on a page to include it in your email.
 - **Custom subject prefix:** Personalize your email subject line via the options page.
 - **Syncs across devices:** Your subject prefix setting is saved with your Firefox account.
@@ -40,22 +40,23 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ## ⚡ Usage
 
-1. **Click the extension icon** in your toolbar.
+1. **Click the extension icon** in your toolbar to open the popup.
 2. **Or use the keyboard shortcut:**  
-   - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd>  
+   - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>  
    - To change:  
      - Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**
+   - **Note:** The shortcut opens the popup; you must click the **Send by Gmail** button to send the email.
 
 3. **Optional:**  
-   - Highlight text on the page before triggering the extension to include it in your email.
+   - Highlight text on the page before opening the popup to include it in your email.
 
-4. **Gmail will open** in a popup window with the subject and body pre-filled.
+4. **Gmail will open** in a new popup window with the subject and body pre-filled.
 
 ---
 
 ## ⚙️ Options
 
-- Click the extension icon and select **Options** (or open via the onboarding page).
+- Access the options page via the onboarding page (shown after install or update), or via the add-on manager (`about:addons` → **Send by Gmail** → **Preferences**).
 - Set a **subject prefix** (e.g., “FYI: ”) to be added to every email subject.
 - Your prefix is saved to Firefox’s cloud storage and syncs across devices.
 
@@ -68,6 +69,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 - **Permissions used:**
   - `activeTab`: To access the current page’s title, URL, and selected text.
   - `storage`: To save your subject prefix (using Firefox’s `storage.sync`).
+  - `management`: To allow self-uninstall from the onboarding page.
 - **Open source:**  
   Review the code anytime!
 

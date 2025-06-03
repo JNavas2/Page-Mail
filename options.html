@@ -2,26 +2,59 @@
   options.html for Send by Gmail Firefox Extension
   © John Navas 2025, All Rights Reserved
 -->
-
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta charset="UTF-8">
     <title>Send by Gmail Options</title>
-    <!-- Link to the options script -->
+    <style>
+        .field-group {
+            margin-top: 24px;
+        }
+        label {
+            font-size: 1rem;
+        }
+        #subjectPrefix {
+            margin-left: 8px;
+        }
+        .button-row {
+            display: flex;
+            align-items: center;
+            margin-top: 32px;
+        }
+        #save {
+            width: 80px;
+            text-align: center;
+            background-color: #63a047;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #save:hover {
+            background-color: #16662d;
+        }
+        #status {
+            margin-left: 24px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #16662d;
+            min-width: 80px;
+        }
+    </style>
     <script src="options.js"></script>
 </head>
-
 <body>
-    <!-- Subject Prefix Option -->
-    <label>
-        Subject Prefix:
+    <div class="field-group">
+        <label for="subjectPrefix">Subject Prefix:</label>
         <input type="text" id="subjectPrefix" />
-    </label>
-    <!-- Save Button -->
-    <button id="save">Save</button>
-    <!-- Status Message -->
-    <div id="status"></div>
+    </div>
+    <div class="button-row">
+        <button id="save" type="button">Save</button>
+        <div id="status"></div>
+    </div>
 </body>
-
 </html>
