@@ -1,30 +1,52 @@
 /*
   background.js for Send by Gmail Firefox Extension
   © John Navas 2025, All Rights Reserved
-  Handles onboarding/upboarding and ensures both the toolbar button
-  and keyboard shortcut open the message popup in a new window.
+  Opens Gmail compose directly from toolbar button or keyboard shortcut.
 */
 
-// Function to open the Send by Gmail popup window
-function openSendByGmailPopup() {
-    browser.windows.create({
-        url: browser.runtime.getURL("popup.html"),
-        type: "popup",
-        width: 400,
-        height: 120
-    });
+// Core function to open Gmail compose window
+async function openGmailCompose() {
+    try {
+        // Get the active tab in the current window
+        let [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+
+        // Get selected text from the active tab
+        let [selectedText] = await browser.tabs.executeScript(tab.id, {
+            code: "window.getSelection().toString();"
+        });
+
+        // Get subject prefix from storage (if any)
+        let { subjectPrefix } = await browser.storage.sync.get('subjectPrefix');
+        subjectPrefix = subjectPrefix || "";
+
+        // Build subject and body for the email
+        let subject = `${subjectPrefix}${tab.title}`;
+        let body = selectedText ? `${selectedText}\n\n${tab.url}` : tab.url;
+
+        // Build the Gmail compose URL
+        let gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open Gmail compose in a new popup window
+        await browser.windows.create({
+            url: gmailUrl,
+            type: "popup",
+            width: 800,
+            height: 600
+        });
+    } catch (error) {
+        console.error("Send by Gmail: Failed to open Gmail compose window:", error);
+        // Optionally, you could show a notification here
+    }
 }
 
-// Listen for the keyboard shortcut
+// Listen for toolbar button clicks
+browser.browserAction.onClicked.addListener(openGmailCompose);
+
+// Listen for keyboard shortcut commands
 browser.commands.onCommand.addListener((command) => {
     if (command === "open-send-by-gmail-popup") {
-        openSendByGmailPopup();
+        openGmailCompose();
     }
-});
-
-// Listen for toolbar button clicks
-browser.browserAction.onClicked.addListener(() => {
-    openSendByGmailPopup();
 });
 
 // Onboarding and Upboarding: show onboarding page on both install and update
