@@ -1,7 +1,9 @@
 /*
   background.js for Send by Gmail Firefox Extension
   © John Navas 2025, All Rights Reserved
-  Opens Gmail compose directly from toolbar button or keyboard shortcut.
+  - Opens Gmail compose directly from toolbar button or keyboard shortcut.
+  - Onboarding/upboarding opens in a new tab.
+  - Shows a notification if Gmail compose fails to open.
 */
 
 // Core function to open Gmail compose window
@@ -9,6 +11,7 @@ async function openGmailCompose() {
     try {
         // Get the active tab in the current window
         let [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+        if (!tab) throw new Error("No active tab found.");
 
         // Get selected text from the active tab
         let [selectedText] = await browser.tabs.executeScript(tab.id, {
@@ -35,7 +38,13 @@ async function openGmailCompose() {
         });
     } catch (error) {
         console.error("Send by Gmail: Failed to open Gmail compose window:", error);
-        // Optionally, you could show a notification here
+        // Show a browser notification to the user
+        browser.notifications.create({
+            "type": "basic",
+            "iconUrl": browser.runtime.getURL("images/icon-64.png"),
+            "title": "Send by Gmail",
+            "message": "Could not open Gmail compose window.\n" + (error && error.message ? error.message : "")
+        });
     }
 }
 
@@ -49,9 +58,11 @@ browser.commands.onCommand.addListener((command) => {
     }
 });
 
-// Onboarding and Upboarding: show onboarding page on both install and update
+// Onboarding and Upboarding: show onboarding page in a new tab on both install and update
 browser.runtime.onInstalled.addListener((details) => {
     if (details.reason === "install" || details.reason === "update") {
-        browser.tabs.create({ url: browser.runtime.getURL("onboarding.html") });
+        browser.tabs.create({
+            url: browser.runtime.getURL("onboarding.html")
+        });
     }
 });
