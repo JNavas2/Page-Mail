@@ -1,5 +1,5 @@
 /*
-  background.js for Send by Gmail Firefox Extension
+  background.js for Page Mail Firefox Extension
   © John Navas 2025, All Rights Reserved
   - Opens Gmail compose directly from toolbar button or keyboard shortcut.
   - Onboarding/upboarding opens in a new tab.
@@ -37,12 +37,12 @@ async function openGmailCompose() {
             height: 600
         });
     } catch (error) {
-        console.error("Send by Gmail: Failed to open Gmail compose window:", error);
+        console.error("Page Mail: Failed to open Gmail compose window:", error);
         // Show a browser notification to the user
         browser.notifications.create({
             "type": "basic",
             "iconUrl": browser.runtime.getURL("images/icon-64.png"),
-            "title": "Send by Gmail",
+            "title": "Page Mail",
             "message": "Could not open Gmail compose window.\n" + (error && error.message ? error.message : "")
         });
     }
@@ -53,7 +53,7 @@ browser.browserAction.onClicked.addListener(openGmailCompose);
 
 // Listen for keyboard shortcut commands
 browser.commands.onCommand.addListener((command) => {
-    if (command === "open-send-by-gmail-popup") {
+    if (command === "open-page-mail-popup") {
         openGmailCompose();
     }
 });

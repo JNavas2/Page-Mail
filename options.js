@@ -1,5 +1,5 @@
 /*
-  options.js for Send by Gmail Firefox Extension
+  options.js for Page Mail Firefox Extension
   © John Navas 2025, All Rights Reserved
   Manages the options page for the extension.
 */

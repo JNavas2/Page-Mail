@@ -1,4 +1,4 @@
-# Send by Gmail
+# Page Mail
 
 **Send the current page by Gmail with the page title, selected text, and URL—easily.**
 
@@ -6,7 +6,7 @@
 
 ## 🚀 Overview
 
-**Send by Gmail** is a simple yet powerful Firefox extension that lets you quickly compose a Gmail message containing:
+**Page Mail** is a simple yet powerful Firefox extension that lets you quickly compose a Gmail message containing:
 - The current page’s title
 - Any text you’ve selected
 - The page URL
@@ -28,7 +28,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 🛠️ Installation
 
 1. **From Mozilla Add-ons:**
-   - Visit [Send by Gmail on AMO](https://addons.mozilla.org/) *(replace with your actual link)*.
+   - Visit [Page Mail on AMO](https://addons.mozilla.org/) *(replace with your actual link)*.
    - Click **Add to Firefox**.
 
 ---
@@ -40,7 +40,7 @@ Perfect for sharing articles, research, or anything you find online—right from
    - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>  
    - To change:  
      - Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**
-   - **Note:** The shortcut opens the popup; you must click the **Send by Gmail** button to send the email.
+   - **Note:** The shortcut opens the popup; you must click the **Page Mail** button to send the email.
 
 3. **Optional:**  
    - Highlight text on the page before opening the popup to include it in your email.
@@ -51,7 +51,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ## ⚙️ Options
 
-- Access the options page via the onboarding page (shown after install or update), or via the add-on manager (`about:addons` → **Send by Gmail** → **Preferences**).
+- Access the options page via the onboarding page (shown after install or update), or via the add-on manager (`about:addons` → **Page Mail** → **Preferences**).
 - Set a **subject prefix** (e.g., “FYI: ”) to be added to every email subject.
 - Your prefix is saved to Firefox’s cloud storage and syncs across devices.
 
@@ -70,14 +70,14 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ---
 
-## 🖥️ Compatibility
+## 🦺 Compatibility
 
 - Firefox 70+
 - Not currently available for Chrome or Edge.
 
 ---
 
-## 📝 Known Issues & Limitations
+## 📖 Known Issues & Limitations
 
 - The extension cannot access special pages (e.g., `about:`, `addons.mozilla.org`).
 - Gmail must be accessible in your browser for the popup to work.
@@ -99,16 +99,16 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ---
 
-## 🛡️ License
+## 🏷️ License
 
 © John Navas 2025. All Rights Reserved.
 
 ---
 
-## 📫 Support
+## 📣 Support
 
 For questions, suggestions, or bug reports, please open an issue on [GitHub](https://github.com/your-repo) *(replace with your actual link)*.
 
 ---
 
-**Enjoy fast, private sharing with Send by Gmail!**
+**Enjoy fast, private sharing with Page Mail!**

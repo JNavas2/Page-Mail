@@ -1,27 +1,32 @@
 <!--
-  options.html for Send by Gmail Firefox Extension
+  options.html for Page Mail Firefox Extension
   © John Navas 2025, All Rights Reserved
 -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Send by Gmail Options</title>
+    <title>Page Mail Options</title>
     <style>
         .field-group {
             margin-top: 24px;
         }
+
         label {
             font-size: 1rem;
         }
+
         #subjectPrefix {
             margin-left: 8px;
         }
+
         .button-row {
             display: flex;
             align-items: center;
             margin-top: 32px;
         }
+
         #save {
             width: 80px;
             text-align: center;
@@ -34,9 +39,11 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         #save:hover {
             background-color: #16662d;
         }
+
         #status {
             margin-left: 24px;
             font-size: 1.5rem;
@@ -47,6 +54,7 @@
     </style>
     <script src="options.js"></script>
 </head>
+
 <body>
     <div class="field-group">
         <label for="subjectPrefix">Subject Prefix:</label>
@@ -57,4 +65,5 @@
         <div id="status"></div>
     </div>
 </body>
+
 </html>
