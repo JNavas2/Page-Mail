@@ -1,12 +1,12 @@
 <!--
-  onboarding.html
+  onboarding.html for Page Mail Firefox Extension
   © John Navas 2025, All Rights Reserved
 -->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Welcome to Page Mail</title>
     <style>
         body {
@@ -38,15 +38,39 @@
         h1 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #000000;
+            color: #000;
             letter-spacing: 0.5px;
             margin: 0;
         }
 
-        p {
-            font-size: 1rem;
-            margin-bottom: 32px;
+        p,
+        ul {
             color: #333;
+            font-size: 1rem;
+        }
+
+        p {
+            margin-bottom: 24px;
+        }
+
+        .login-note {
+            background: #fff9c4;
+            border: 1px solid #f0e68c;
+            color: #665c00;
+            padding: 12px 16px;
+            margin: 16px auto 24px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        ul {
+            text-align: left;
+            margin: 0 auto 24px;
+            padding-left: 20px;
+            max-width: 350px;
         }
 
         .button-row {
@@ -83,6 +107,12 @@
         #remove:hover {
             background: #b71c1c;
         }
+
+        .trademark-note {
+            margin-top: 36px;
+            color: #888;
+            font-size: 0.92em;
+        }
     </style>
     <script src="onboarding.js"></script>
 </head>
@@ -93,13 +123,25 @@
         <h1>Welcome to Page Mail</h1>
     </div>
     <p>
-        This extension lets you quickly send the current page by Gmail with its title,
-        selected text, and URL.<br>
-        Use the buttons below to customize your subject prefix or remove the extension.
+        Page Mail lets you quickly send the current page by <strong>Gmail&reg;</strong> or
+        <strong>Outlook&reg;</strong>&mdash;including the page title, selected text, and URL.
     </p>
+    <div class="login-note">
+        <strong>Note:</strong> You must be logged in to your selected email service (Gmail&reg; or Outlook&reg;) in your
+        browser for Page Mail to work properly.
+    </div>
+    <ul>
+        <li>Choose your preferred email service (<strong>Gmail&reg;</strong> or <strong>Outlook&reg;</strong>) in
+            <b>Options</b>.</li>
+        <li>Optional: Set a custom <b>Subject prefix</b> for your emails in <b>Options</b>.</li>
+        <li>Remove the extension at any time.</li>
+    </ul>
     <div class="button-row">
         <button id="options">Options</button>
         <button id="remove">Remove Extension</button>
+    </div>
+    <div class="trademark-note">
+        All trademarks are the property of their respective owners.
     </div>
 </body>
 

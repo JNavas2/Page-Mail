@@ -1,12 +1,12 @@
 # Page Mail
 
-**Send the current page by Gmail with the page title, selected text, and URL—easily.**
+**Send the current page by Gmail® with the page title, selected text, and URL—easily.**
 
 ---
 
 ## 🚀 Overview
 
-**Page Mail** is a simple yet powerful Firefox extension that lets you quickly compose a Gmail message containing:
+**Page Mail** is a simple yet powerful Firefox extension that lets you quickly compose a Gmail® message containing:
 - The current page’s title
 - Any text you’ve selected
 - The page URL
@@ -17,7 +17,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ## 🎉 Features
 
-- **One-click sharing:** Click the extension button to open Gmail with the page details pre-filled.
+- **One-click sharing:** Click the extension button to open Gmail® with the page details pre-filled.
 - **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd> (customizable) to open the extension popup.
 - **Selected text support:** Highlight text on a page to include it in your email.
 - **Custom subject prefix:** Personalize your email subject line via the options page.
@@ -45,7 +45,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 3. **Optional:**  
    - Highlight text on the page before opening the popup to include it in your email.
 
-4. **Gmail will open** in a new popup window with the subject and body pre-filled.
+4. **Gmail® will open** in a new popup window with the subject and body pre-filled.
 
 ---
 
@@ -80,9 +80,9 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 📖 Known Issues & Limitations
 
 - The extension cannot access special pages (e.g., `about:`, `addons.mozilla.org`).
-- Gmail must be accessible in your browser for the popup to work.
-- Only works with Gmail.
-- The amount of selected text you can include is limited by the maximum URL length supported by browsers and Gmail. Extremely large selections may be truncated or fail to open in Gmail.
+- Gmail® must be accessible in your browser for the popup to work.
+- Only works with Gmail®.
+- The amount of selected text you can include is limited by the maximum URL length supported by browsers and Gmail®. Extremely large selections may be truncated or fail to open in Gmail®.
 
 ---
 
@@ -92,10 +92,10 @@ Perfect for sharing articles, research, or anything you find online—right from
 **A:** Yes! Go to `about:addons` → ⚙️ → **Manage Extension Shortcuts**.
 
 **Q:** Does this work with other email providers?  
-**A:** No, it is designed for Gmail only.
+**A:** No, it is designed for Gmail® only.
 
 **Q:** Is my browsing data sent anywhere?  
-**A:** No. The extension only opens Gmail with data you see; nothing is sent to third parties.
+**A:** No. The extension only opens Gmail® with data you see; nothing is sent to third parties.
 
 ---
 
@@ -112,3 +112,7 @@ For questions, suggestions, or bug reports, please open an issue on [GitHub](htt
 ---
 
 **Enjoy fast, private sharing with Page Mail!**
+
+---
+
+_All trademarks are the property of their respective owners._

@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Page Mail",
   "version": "0.9.0",
-  "description": "Send the current page by Gmail with title, selected text, and URL.",
+  "description": "Send the current page by Gmail® or Outlook® with title, selected text, and URL.",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -30,14 +30,14 @@
       "96": "images/icon-96.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "Page Mail"
+    "default_title": "Page Mail: Send by Gmail® or Outlook®"
   },
   "commands": {
     "open-page-mail-popup": {
       "suggested_key": {
         "default": "Ctrl+Alt+S"
       },
-      "description": "Open the Page Mail popup"
+      "description": "Open the Page Mail popup (Gmail® or Outlook®)"
     }
   },
   "browser_specific_settings": {
