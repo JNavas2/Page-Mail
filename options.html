@@ -71,8 +71,14 @@
             margin: 2px 0 4px 24px;
         }
 
+        /* Updated button-row styles for horizontal layout */
         .button-row {
             margin: 32px auto 0 auto;
+            width: 260px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         #save {
@@ -92,8 +98,9 @@
             background: #16662d;
         }
 
+        /* Adjusted status to appear inline with button */
         #status {
-            margin-top: 12px;
+            margin-left: 20px;
             font-size: 1.2rem;
             font-weight: bold;
             color: #16662d;

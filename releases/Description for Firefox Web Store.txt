@@ -1,0 +1,59 @@
+**Send the current page by Gmail® or Outlook® with the page title, selected text, and URL—easily.**
+
+**Overview**
+Page Mail is a simple yet powerful Firefox extension that lets you quickly compose an email message containing:
+- The current page’s title
+- Any text you’ve selected
+- The page URL
+
+Perfect for sharing articles, research, or anything you find online—right from your browser! Supports both Gmail® and Outlook®.
+
+**Features**
+- One-click sharing: Click the extension button to open Gmail® or Outlook® with the page details pre-filled.
+- Keyboard shortcut: Use Ctrl+Alt+P (customizable) to open the extension popup.
+- Selected text support: Highlight text on a page to include it in your email.
+- Custom subject prefix: Personalize your email subject line via the options page.
+- Syncs across devices: Your subject prefix setting is saved with your Firefox account.
+
+**Usage**
+1. Choose your email provider (Gmail® or Outlook®) in Options.
+2. (Optional) Highlight text on the page to include it in your email.
+3. Open the popup by clicking the extension icon or using Ctrl+Alt+P (customizable in about:addons → Manage Extension Shortcuts).
+4. You must initiate sending from the new message popup.
+
+**Options**
+- Access the options page via the onboarding page or Firefox add-on manager (about:addons → Page Mail → Preferences).
+- Set a subject prefix (e.g., “FYI: ”) to be added to every email subject.
+- Choose Gmail® or Outlook® as your preferred provider.
+- Settings sync with your Firefox account.
+
+**Privacy & Permissions**
+- No tracking. No data collection.
+- Permissions: activeTab, storage, management.
+- Open source: View code at https://github.com/JNavas2/Page-Mail
+
+**Compatibility**
+- Firefox 70+
+- Not currently available for other browsers.
+
+**Known Issues & Limitations**
+- The extension cannot access special pages (e.g., about:, addons.mozilla.org).
+- You must be logged in to your selected email service (Gmail® or Outlook®) in Firefox for Page Mail to work properly.
+- The amount of selected text you can include is limited by the maximum URL length supported by browsers and the email providers. Large selections may be truncated or fail to open in the email composer.
+
+**FAQ**
+Q: Can I change the keyboard shortcut?  
+A: Yes! Go to about:addons → Manage Extension Shortcuts.
+
+Q: Does this work with other email providers?  
+A: It supports Gmail® and Outlook® only.
+
+Q: Is my browsing data sent anywhere?  
+A: No. The extension only opens Gmail® or Outlook® with data you see; nothing is sent to third parties.
+
+**Support**
+For questions, suggestions, or bug reports, please open an [Issue](https://github.com/JNavas2/Page-Mail/issues)
+
+**Enjoy fast, private sharing with Page Mail!**
+
+*All trademarks are the property of their respective owners.*

@@ -18,7 +18,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 🎉 Features
 
 - **One-click sharing:** Click the extension button to open Gmail® or Outlook® with the page details pre-filled.  
-- **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd> (customizable) to open the extension popup.  
+- **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> (customizable) to open the extension popup.  
 - **Selected text support:** Highlight text on a page to include it in your email.  
 - **Custom subject prefix:** Personalize your email subject line via the options page.  
 - **Syncs across devices:** Your subject prefix setting is saved with your Firefox account.
@@ -41,7 +41,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 3. **Either:**  
    - **Click the extension icon** in your toolbar to open the popup.  
    - **Or use the keyboard shortcut:**  
-     - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>  
+     - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd>  
      - To change: Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**  
 4. **Sending:** You must initiate sending from the new message popup.
 

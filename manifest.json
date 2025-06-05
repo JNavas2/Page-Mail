@@ -35,7 +35,7 @@
   "commands": {
     "open-page-mail-popup": {
       "suggested_key": {
-        "default": "Ctrl+Alt+S"
+        "default": "Ctrl+Alt+P"
       },
       "description": "Open the Page Mail popup (Gmail® or Outlook®)"
     }
