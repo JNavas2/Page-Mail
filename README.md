@@ -11,7 +11,7 @@
 - Any text you’ve selected  
 - The page URL  
 
-Perfect for sharing articles, research, or anything you find online—right from your browser! It now supports both Gmail® and Outlook®.
+Perfect for sharing articles, research, or anything you find online—right from your browser! Supports both Gmail® and Outlook®.
 
 ---
 
@@ -28,29 +28,30 @@ Perfect for sharing articles, research, or anything you find online—right from
 ## 🛠️ Installation
 
 1. **From Mozilla Add-ons:**  
-   - Visit [Page Mail on AMO](https://addons.mozilla.org/) *(replace with your actual link)*.  
+   - Visit [Page Mail on AMO](https://addons.mozilla.org/).  
    - Click **Add to Firefox**.
 
 ---
 
 ## ⚡ Usage
 
-1. **Click the extension icon** in your toolbar to open the popup.  
-2. **Or use the keyboard shortcut:**  
-   - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>  
-   - To change:  
-     - Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**  
-   - **Note:** The shortcut opens the popup; you must click the **Page Mail** button to send the email.  
-3. **Optional:**  
-   - Highlight text on the page before opening the popup to include it in your email.  
-4. **Choose your email provider:**  
-   - Select either Gmail® or Outlook® to open a new popup window with the subject and body pre-filled.
+1. **Choose your email provider:** Select either Gmail® or Outlook® in **Options**.  
+2. **Optional:** Highlight text on the page before opening the popup to include it in your email.  
+   - See Known Issues & Limitations.  
+3. **Either:**  
+   - **Click the extension icon** in your toolbar to open the popup.  
+   - **Or use the keyboard shortcut:**  
+     - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>  
+     - To change: Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**  
+4. **Sending:** You must initiate sending from the new message popup.
 
 ---
 
 ## ⚙️ Options
 
-- Access the options page via the onboarding page (shown after install or update), or via the add-on manager (`about:addons` → **Page Mail** → **Preferences**).  
+- Access the options page via:  
+  - The onboarding page (shown after install or update), or  
+  - The Firefox add-on manager (`about:addons` → **Page Mail** → **Preferences**).  
 - Set a **subject prefix** (e.g., “FYI: ”) to be added to every email subject.  
 - Choose your preferred email provider: Gmail® or Outlook®.  
 - Your settings are saved to Firefox’s cloud storage and sync across devices.
@@ -66,23 +67,22 @@ Perfect for sharing articles, research, or anything you find online—right from
   - `storage`: To save your subject prefix and email provider preference (using Firefox’s `storage.sync`).  
   - `management`: To allow self-uninstall from the onboarding page.  
 - **Open source:**  
-  Review the code anytime!
+  Review the code at any time!
 
 ---
 
 ## 🦺 Compatibility
 
 - Firefox 70+  
-- Not currently available for Chrome or Edge.
+- Not currently available for other browsers.
 
 ---
 
 ## 📖 Known Issues & Limitations
 
 - The extension cannot access special pages (e.g., `about:`, `addons.mozilla.org`).  
-- Gmail® or Outlook® must be accessible in your browser for the popup to work.  
-- **Note:** You must be logged in to your selected email service (Gmail® or Outlook®) in your browser for Page Mail to work properly.  
-- The amount of selected text you can include is limited by the maximum URL length supported by browsers and the email providers. Extremely large selections may be truncated or fail to open in the email composer.
+- You must be **logged in** to your selected email service (Gmail® or Outlook®) in Firefox for Page Mail to work properly.  
+- The **amount of selected text** you can include is limited by the maximum URL length supported by browsers and the email providers. Large selections may be truncated or fail to open in the email composer.
 
 ---
 
@@ -107,7 +107,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 
 ## 📣 Support
 
-For questions, suggestions, or bug reports, please open an issue on [GitHub](https://github.com/your-repo) *(replace with your actual link)*.
+For questions, suggestions, or bug reports, please open an [issue](https://github.com/JNavas2/Page-Mail/issues).
 
 ---
 
