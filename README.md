@@ -99,5 +99,5 @@ All trademarks are the property of their respective owners.
 
 ## Support
 
-For help, feature requests, or to report issues, visit the [GitHub repository](https://github.com/).
+For help, feature requests, or to report issues, visit the [GitHub repository](https://github.com/JNavas2/Page-Mail/issues).
 
