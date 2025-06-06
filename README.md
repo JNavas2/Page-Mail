@@ -20,7 +20,7 @@ Send the current page by email—complete with title, selected text, and URL—u
 
 ## Installation
 
-1. Install the extension from [AMO](https://addons.mozilla.org/) or [GitHub](https://github.com/).
+1. Install the extension from [AMO](https://addons.mozilla.org/).
 2. Click the Page Mail icon in your Firefox toolbar, or use the keyboard shortcut (`Ctrl+Alt+P` by default).
 3. On first use, you’ll see an onboarding page with setup tips.
 
