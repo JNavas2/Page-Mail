@@ -21,8 +21,7 @@ Send the current page by email—complete with title, selected text, and URL—u
 ## Installation
 
 1. Install the extension from [AMO](https://addons.mozilla.org/).
-2. Click the Page Mail icon in your Firefox toolbar, or use the keyboard shortcut (`Ctrl+Alt+P` by default).
-3. On first use, you’ll see an onboarding page with setup tips.
+2. On install or update you’ll see an onboarding page with setup tips.
 
 ---
 
@@ -39,10 +38,10 @@ Send the current page by email—complete with title, selected text, and URL—u
 
 ## Options
 
-- Open the extension’s options page to:
+- Open the extension’s Options page to:
   - Set a custom subject prefix (optional)
   - Choose your email service: Gmail®, Outlook®, or Email link handler (mailto:)
-- Changes are saved automatically.
+- Changes are saved to the Firefox cloud to sync across devices.
 
 ---
 
@@ -52,23 +51,19 @@ When you select **Email link handler (mailto:)** in Page Mail’s options, the e
 
 To choose or change which program or service Firefox uses for email links:
 
-- See the official Mozilla help article:  
-  [Change the program used to open email links](https://support.mozilla.org/en-US/kb/change-program-used-open-email-links)
+- See the Mozilla help article: [Change the program used to open email links](https://support.mozilla.org/en-US/kb/change-program-used-open-email-links)
 
 This article explains how to:
 - Set your preferred desktop email client (such as Thunderbird, Outlook, or Apple Mail)
 - Use a webmail service (such as Gmail) for mailto links
 - Change these settings on Windows, macOS, or Linux
 
-**Tip:**  
-If you want Page Mail to use a particular email app or webmail service when “Email link handler (mailto:)” is selected, make sure Firefox is set up to use your preferred handler.
-
 ---
 
 ## FAQ
 
 **Q: Why doesn’t Page Mail work on some pages (like `about:`, `addons.mozilla.org`, or other internal pages)?**  
-A: Firefox restricts extensions from running on certain protected pages for security reasons. If you try to use Page Mail on these pages, you’ll see a popup explaining the limitation. Try again on a regular website.
+A: Firefox restricts extensions from running on certain protected pages for security reasons. If you try to use Page Mail on these pages, you’ll see a popup explaining the limitation.
 
 **Q: Can I use a different keyboard shortcut?**  
 A: Yes! Go to `about:addons`, click the gear icon, choose “Manage Extension Shortcuts,” and set your preferred shortcut for Page Mail.
