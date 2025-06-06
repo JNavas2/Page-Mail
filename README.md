@@ -39,10 +39,10 @@ using Gmail®, Outlook®, or your system’s email handler (mailto:).
 
 ## Options
 
-- Open the extension’s Options page to:
+- Open the extension’s Options page (from the extension’s context menu or the Add-ons Manager) to:
   - Set a custom subject prefix (optional)
   - Choose your email service: Gmail®, Outlook®, or Email link handler (mailto:)
-- Changes are saved to the Firefox cloud to sync across devices.
+- Changes are saved and will sync across devices if you use Firefox Sync.
 
 ---
 
@@ -78,7 +78,7 @@ A: Only text you’ve actively selected on the page will be included. If nothing
 
 - Page Mail cannot work on Firefox internal pages (e.g., `about:`, `addons.mozilla.org`) due to browser security restrictions.
 - Some webmail services may require you to be logged in before composing a message.
-- The mailto: handler uses your Firefox settings; see [Configuring Mailto](#configuring-mailto) above.
+- The mailto: handler uses your Firefox settings; see [Configuring mailto](#configuring-mailto) above.
 
 ---
 
@@ -100,4 +100,3 @@ All trademarks are the property of their respective owners.
 ## Support
 
 For help, feature requests, or to report issues, visit the [GitHub repository](https://github.com/JNavas2/Page-Mail/issues).
-
