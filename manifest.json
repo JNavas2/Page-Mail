@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Page Mail",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "Send the current page by email with title, selected text, and URL.",
   "icons": {
     "16": "images/icon-16.png",
