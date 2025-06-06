@@ -1,119 +1,107 @@
 # Page Mail
 
-**Send the current page by Gmail®, Outlook®, or your email link handler (mailto:) with the page title, selected text, and URL—easily.**
+Send the current page by email—complete with title, selected text, and URL—using Gmail®, Outlook®, or your system’s email handler (mailto:).
+
+© John Navas 2025, All Rights Reserved
 
 ---
 
-## 🚀 Overview
+## Features
 
-**Page Mail** is a simple yet powerful Firefox extension that lets you quickly compose an email message containing:  
-- The current page’s title  
-- Any text you’ve selected  
-- The page URL  
-
-Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Gmail®, Outlook®, and your system’s default email handler.
-
----
-
-## 🎉 Features
-
-- **One-click sharing:** Click the extension button to open Gmail®, Outlook®, or your email link handler with the page details pre-filled.  
-- **Keyboard shortcut:** Use <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> (customizable) to open the extension popup.  
-- **Selected text support:** Highlight text on a page to include it in your email.  
-- **Custom subject prefix:** Personalize your email subject line via the options page.  
-- **Syncs across devices:** Your subject prefix setting is saved with your Firefox account.
+- Send the current page by email with one click or keyboard shortcut
+- Supports Gmail®, Outlook®, or your default email handler (mailto:)
+- Optionally include a subject prefix
+- Includes selected text (if any) and the page URL in the email body
+- Works from the toolbar button or with a customizable shortcut
+- Clean, modern options and onboarding pages
+- No tracking, no ads, and no data collection
 
 ---
 
-## 🛠️ Installation
+## Installation
 
-1. **From Mozilla Add-ons:**  
-   - Visit [Page Mail on AMO](https://addons.mozilla.org/).  
-   - Click **Add to Firefox**.
-
----
-
-## ⚡ Usage
-
-1. **Choose your email provider:** Select Gmail®, Outlook®, or Email link handler (mailto:) in **Options**.  
-2. **Optional:** Highlight text on the page before opening the popup to include it in your email.  
-   - See Known Issues & Limitations.  
-3. **Either:**  
-   - **Click the extension icon** in your toolbar to open the popup.  
-   - **Or use the keyboard shortcut:**  
-     - Default: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd>  
-     - To change: Go to `about:addons` → ⚙️ (gear) → **Manage Extension Shortcuts**  
-4. **Sending:** You must initiate sending from the new message popup.
+1. Download the extension from [AMO](https://addons.mozilla.org/) or [GitHub](https://github.com/).
+2. Click the Page Mail icon in your Firefox toolbar, or use the keyboard shortcut (`Ctrl+Alt+P` by default).
+3. On first use, you’ll see an onboarding page with setup tips.
 
 ---
 
-## ⚙️ Options
+## Usage
 
-- Access the options page via:  
-  - The onboarding page (shown after install or update), or  
-  - The Firefox add-on manager (`about:addons` → **Page Mail** → **Preferences**).  
-- Set a **subject prefix** (e.g., “FYI: ”) to be added to every email subject.  
-- Choose your preferred email provider: Gmail®, Outlook®, or Email link handler (mailto:).  
-- Your settings are saved to Firefox’s cloud storage and sync across devices.
-
----
-
-## 🔒 Privacy & Permissions
-
-- **No tracking. No data collection.**  
-  This extension does **not** collect, store, or transmit any personal data.  
-- **Permissions used:**  
-  - `activeTab`: To access the current page’s title, URL, and selected text.  
-  - `storage`: To save your subject prefix and email provider preference (using Firefox’s `storage.sync`).  
-  - `management`: To allow self-uninstall from the onboarding page.  
-- **Open source:**  
-  Review the code at any time!
+- Click the Page Mail toolbar button, or press the shortcut (`Ctrl+Alt+P`).
+- A new email compose window will open in your chosen service (Gmail®, Outlook®, or your system handler).
+- The email will include:
+  - The page title in the subject (with optional prefix)
+  - Any selected text (if present)
+  - The page URL
 
 ---
 
-## 🦾 Compatibility
+## Options
 
-- Firefox 70+  
-- Not currently available for other browsers.
-
----
-
-## 📝 Known Issues & Limitations
-
-- The extension cannot access special pages (e.g., `about:`, `addons.mozilla.org`).  
-- You must be **logged in** to your selected email service (Gmail® or Outlook®) in Firefox for Page Mail to work properly.  
-- For the Email link handler, your system's default mail app or webmail will be used (make sure your browser is configured to handle `mailto:` links).  
-- The **amount of selected text** you can include is limited by the maximum URL length supported by browsers and the email providers. Large selections may be truncated or fail to open in the email composer.
+- Open the extension’s options page to:
+  - Set a custom subject prefix (optional)
+  - Choose your email service: Gmail®, Outlook®, or Email link handler (mailto:)
+- Changes are saved automatically.
 
 ---
 
-## 💡 FAQ
+## CONFIGURING MAILTO:
 
-**Q:** Can I change the keyboard shortcut?  
-**A:** Yes! Go to `about:addons` → ⚙️ → **Manage Extension Shortcuts**.
+When you select **Email link handler (mailto:)** in Page Mail’s options, the extension uses Firefox’s configured handler for `mailto:` links. This can be your operating system’s default email app or a webmail service (like Gmail or Outlook.com).
 
-**Q:** Does this work with other email providers?  
-**A:** It supports Gmail®, Outlook®, and any service registered as your system's mailto: handler.
+To choose or change which program or service Firefox uses for email links:
 
-**Q:** Is my browsing data sent anywhere?  
-**A:** No. The extension only opens your chosen email service with data you see; nothing is sent to third parties.
+- See the official Mozilla help article:  
+  [Change the program used to open email links](https://support.mozilla.org/en-US/kb/change-program-used-open-email-links)
 
----
+This article explains how to:
+- Set your preferred desktop email client (such as Thunderbird, Outlook, or Apple Mail)
+- Use a webmail service (such as Gmail) for mailto links
+- Change these settings on Windows, macOS, or Linux
 
-## 🏷️ License
-
-© John Navas 2025. All Rights Reserved.
-
----
-
-## 📣 Support
-
-For questions, suggestions, or bug reports, please open an [issue](https://github.com/JNavas2/Page-Mail/issues).
+**Tip:**  
+If you want Page Mail to use a particular email app or webmail service when “Email link handler (mailto:)” is selected, make sure Firefox is set up to use your preferred handler.
 
 ---
 
-**Enjoy fast, private sharing with Page Mail!**
+## FAQ
+
+**Q: Why doesn’t Page Mail work on some pages (like `about:`, `addons.mozilla.org`, or other internal pages)?**  
+A: Firefox restricts extensions from running on certain protected pages for security reasons. If you try to use Page Mail on these pages, you’ll see a popup explaining the limitation. Try again on a regular website.
+
+**Q: Can I use a different keyboard shortcut?**  
+A: Yes! Go to `about:addons`, click the gear icon, choose “Manage Extension Shortcuts,” and set your preferred shortcut for Page Mail.
+
+**Q: What if my email doesn’t include selected text?**  
+A: Only text you’ve actively selected on the page will be included. If nothing is selected, only the URL is sent.
 
 ---
 
-_All trademarks are the property of their respective owners._
+## Known Issues
+
+- Page Mail cannot work on Firefox internal pages (e.g., `about:`, `addons.mozilla.org`) due to browser security restrictions.
+- Some webmail services may require you to be logged in before composing a message.
+- The mailto: handler uses your Firefox settings; see [Configuring Mailto](#configuring-mailto) above.
+
+---
+
+## Privacy
+
+Page Mail does **not** collect or transmit any personal data.  
+No tracking, no analytics, no ads—just email your pages, privately.
+
+---
+
+## License
+
+© John Navas 2025, All Rights Reserved
+
+All trademarks are the property of their respective owners.
+
+---
+
+## Support
+
+For help, feature requests, or to report issues, visit the [GitHub repository](https://github.com/).
+
