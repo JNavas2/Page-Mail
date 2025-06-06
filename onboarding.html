@@ -53,24 +53,25 @@
             margin-bottom: 24px;
         }
 
-        .login-note {
-            background: #fff9c4;
-            border: 1px solid #f0e68c;
-            color: #665c00;
-            padding: 12px 16px;
-            margin: 16px auto 24px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            max-width: 420px;
-            text-align: center;
-        }
-
         ul {
             text-align: left;
             margin: 0 auto 24px;
             padding-left: 20px;
             max-width: 350px;
+        }
+
+        ul ul {
+            margin: 4px 0 4px 0;
+            padding-left: 16px;
+        }
+
+        ul li {
+            margin-bottom: 7px;
+        }
+
+        ul ul li {
+            margin-bottom: 2px;
+            font-size: 0.97em;
         }
 
         .button-row {
@@ -123,16 +124,19 @@
         <h1>Welcome to Page Mail</h1>
     </div>
     <p>
-        Page Mail lets you quickly send the current page by <strong>Gmail&reg;</strong> or
-        <strong>Outlook&reg;</strong>&mdash;including the page title, selected text, and URL.
+        Page Mail lets you quickly send the current web page by email, including the page title, selected text, and URL.
     </p>
-    <div class="login-note">
-        <strong>Note:</strong> You must be logged in to your selected email service (Gmail&reg; or Outlook&reg;) in your
-        browser for Page Mail to work properly.
-    </div>
     <ul>
-        <li>Choose your preferred email service (<strong>Gmail&reg;</strong> or <strong>Outlook&reg;</strong>) in
-            <b>Options</b>.</li>
+        <li>
+            Choose your preferred email service (<strong>Gmail&reg;</strong>,
+            <strong>Outlook&reg;</strong>, or <strong>Email link handler</strong>) in
+            <b>Options</b>.
+            <ul>
+                <li>For Gmail&reg; or Outlook&reg;, you must be logged in to your selected email service in your browser
+                    for Page Mail to work properly.</li>
+                <li>For the Email link handler, your system's default mail app or webmail will be used.</li>
+            </ul>
+        </li>
         <li>Optional: Set a custom <b>Subject prefix</b> for your emails in <b>Options</b>.</li>
         <li>Remove the extension at any time.</li>
     </ul>

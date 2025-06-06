@@ -1,39 +1,51 @@
 /*
   background.js for Page Mail Firefox Extension
   © John Navas 2025, All Rights Reserved
-  - Opens Gmail® or Outlook® compose directly from toolbar button or keyboard shortcut.
+  - Opens Gmail®, Outlook®, or the default email link handler (mailto:) compose directly from toolbar button or keyboard shortcut.
   - Onboarding/upboarding opens in a new tab.
-  - Shows a notification if compose fails to open.
+  - Shows a popup error message if compose fails to open or if the page is protected.
 */
 
 // Core function to open the selected email service's compose window
 async function openComposeWindow() {
     try {
         // Get the active tab in the current window
-        let [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+        const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
         if (!tab) throw new Error("No active tab found.");
 
-        // Get selected text from the active tab
-        let [selectedText] = await browser.tabs.executeScript(tab.id, {
-            code: "window.getSelection().toString();"
-        });
+        // Try to get selected text from the active tab
+        let selectedText;
+        try {
+            [selectedText] = await browser.tabs.executeScript(tab.id, {
+                code: "window.getSelection().toString();"
+            });
+        } catch (injectErr) {
+            // This happens on protected pages; show error popup
+            await browser.windows.create({
+                url: browser.runtime.getURL("error.html"),
+                type: "popup",
+                width: 540,
+                height: 270
+            });
+            return;
+        }
 
         // Get subject prefix and email service from storage
-        let { subjectPrefix, emailService } = await browser.storage.sync.get(['subjectPrefix', 'emailService']);
-        subjectPrefix = subjectPrefix || "";
-        emailService = emailService || "gmail";
+        const { subjectPrefix, emailService } = await browser.storage.sync.get(['subjectPrefix', 'emailService']);
+        const prefix = subjectPrefix || "";
+        const service = emailService || "gmail";
 
         // Build subject and body for the email
-        let subject = `${subjectPrefix}${tab.title}`;
-        let body = selectedText ? `${selectedText}\n\n${tab.url}` : tab.url;
+        const subject = `${prefix}${tab.title}`;
+        const body = selectedText ? `${selectedText}\n\n${tab.url}` : tab.url;
 
+        // Build the compose URL for the selected service
         let composeUrl;
-        if (emailService === "outlook") {
-            // Outlook® compose URL
-            // See: https://learn.microsoft.com/en-us/outlook/actionable-messages/compose-action
+        if (service === "outlook") {
             composeUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        } else if (service === "handler") {
+            composeUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         } else {
-            // Gmail® compose URL (default)
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
@@ -46,12 +58,12 @@ async function openComposeWindow() {
         });
     } catch (error) {
         console.error("Page Mail: Failed to open compose window:", error);
-        // Show a browser notification to the user
-        browser.notifications.create({
-            "type": "basic",
-            "iconUrl": browser.runtime.getURL("images/icon-64.png"),
-            "title": "Page Mail",
-            "message": "Could not open compose window for Gmail® or Outlook®.\n" + (error && error.message ? error.message : "")
+        // Show a popup window with an error explanation
+        await browser.windows.create({
+            url: browser.runtime.getURL("error.html"),
+            type: "popup",
+            width: 400,
+            height: 320
         });
     }
 }

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('serviceGmail').checked = true;
         } else if (service === "outlook") {
             document.getElementById('serviceOutlook').checked = true;
+        } else if (service === "handler") {
+            document.getElementById('serviceHandler').checked = true;
         }
     }).catch(error => {
         console.error("Failed to load options from storage.sync:", error);
@@ -21,7 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('save').addEventListener('click', async () => {
         let prefix = document.getElementById('subjectPrefix').value;
-        let service = document.getElementById('serviceGmail').checked ? "gmail" : "outlook";
+        let service = document.getElementById('serviceGmail').checked
+            ? "gmail"
+            : document.getElementById('serviceOutlook').checked
+                ? "outlook"
+                : document.getElementById('serviceHandler').checked
+                    ? "handler"
+                    : "gmail";
         try {
             await browser.storage.sync.set({ subjectPrefix: prefix, emailService: service });
             document.getElementById('status').textContent = "Saved!";
