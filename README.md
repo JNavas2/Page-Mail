@@ -1,6 +1,7 @@
 # Page Mail
 
-Send the current page by email—complete with title, selected text, and URL—using Gmail®, Outlook®, or your system’s email handler (mailto:).
+Send the current page by email—complete with title, selected text, and URL—
+using Gmail®, Outlook®, or your system’s email handler (mailto:).
 
 © John Navas 2025, All Rights Reserved
 
