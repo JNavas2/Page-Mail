@@ -46,7 +46,7 @@ using Gmail®, Outlook®, or your system’s email handler (mailto:).
 
 ---
 
-## CONFIGURING MAILTO:
+## Configuring mailto:
 
 When you select **Email link handler (mailto:)** in Page Mail’s options, the extension uses Firefox’s configured handler for `mailto:` links. This can be your operating system’s default email app or a webmail service (like Gmail or Outlook.com).
 
