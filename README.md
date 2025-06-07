@@ -1,7 +1,7 @@
 # Page Mail
 
 Send the current page by email—complete with title, selected text, and URL—   
-using Gmail®, Outlook®, or your system’s email handler (mailto:).
+using your system’s email handler (mailto:), Gmail® or Outlook®.
 
 © John Navas 2025, All Rights Reserved
 
@@ -10,7 +10,7 @@ using Gmail®, Outlook®, or your system’s email handler (mailto:).
 ## Features
 
 - Send the current page by email with one click or keyboard shortcut
-- Supports Gmail®, Outlook®, or your default email handler (mailto:)
+- Supports Email link handler (mailto:), Gmail® or Outlook®
 - Optionally include a subject prefix
 - Includes selected text (if any) and the page URL in the email body
 - Works from the toolbar button or with a customizable shortcut
@@ -29,7 +29,7 @@ using Gmail®, Outlook®, or your system’s email handler (mailto:).
 ## Usage
 
 - Click the Page Mail toolbar button, or press the shortcut (`Ctrl+Alt+P`).
-- A new email compose window will open in your chosen service (Gmail®, Outlook®, or your system handler).
+- A new email compose window will open in your chosen service (Email link handler (mailto:), Gmail®, or Outlook®).
 - The email will include:
   - The page title in the subject (with optional prefix)
   - Any selected text (if present)
@@ -41,7 +41,7 @@ using Gmail®, Outlook®, or your system’s email handler (mailto:).
 
 - Open the extension’s Options page (from the extension’s context menu or the Add-ons Manager) to:
   - Set a custom subject prefix (optional)
-  - Choose your email service: Gmail®, Outlook®, or Email link handler (mailto:)
+  - Choose your email service: Email link handler (mailto:), Gmail®, or Outlook®
 - Changes are saved and will sync across devices if you use Firefox Sync.
 
 ---

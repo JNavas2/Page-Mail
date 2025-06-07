@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load subjectPrefix and emailService from storage
     browser.storage.sync.get(['subjectPrefix', 'emailService']).then((data) => {
         document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
-        const service = data.emailService || "gmail";
+        const service = data.emailService || "handler";
         if (service === "gmail") {
             document.getElementById('serviceGmail').checked = true;
         } else if (service === "outlook") {

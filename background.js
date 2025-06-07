@@ -33,7 +33,7 @@ async function openComposeWindow() {
         // Get subject prefix and email service from storage
         const { subjectPrefix, emailService } = await browser.storage.sync.get(['subjectPrefix', 'emailService']);
         const prefix = subjectPrefix || "";
-        const service = emailService || "gmail";
+        const service = emailService || "handler"; // Changed default to "handler"
 
         // Build subject and body for the email
         const subject = `${prefix}${tab.title}`;
