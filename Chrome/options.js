@@ -1,12 +1,15 @@
 /*
-  options.js for Page Mail Firefox Extension
+  options.js for Page Mail Extension
   © John Navas 2025, All Rights Reserved
   Manages the options page for the extension.
 */
 
+// Polyfill for browser/chrome compatibility
+const ext = typeof browser !== "undefined" ? browser : chrome;
+
 document.addEventListener('DOMContentLoaded', () => {
     // Load subjectPrefix and emailService from storage
-    browser.storage.sync.get(['subjectPrefix', 'emailService']).then((data) => {
+    ext.storage.sync.get(['subjectPrefix', 'emailService'], (data) => {
         document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
         const service = data.emailService || "handler";
         if (service === "gmail") {
@@ -16,12 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (service === "handler") {
             document.getElementById('serviceHandler').checked = true;
         }
-    }).catch(error => {
-        console.error("Failed to load options from storage.sync:", error);
-        document.getElementById('status').textContent = "Error loading settings.";
     });
 
-    document.getElementById('save').addEventListener('click', async () => {
+    document.getElementById('save').addEventListener('click', () => {
         let prefix = document.getElementById('subjectPrefix').value;
         let service = document.getElementById('serviceGmail').checked
             ? "gmail"
@@ -30,15 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 : document.getElementById('serviceHandler').checked
                     ? "handler"
                     : "gmail";
-        try {
-            await browser.storage.sync.set({ subjectPrefix: prefix, emailService: service });
-            document.getElementById('status').textContent = "Saved!";
-        } catch (error) {
-            console.error("Failed to save options to storage.sync:", error);
-            document.getElementById('status').textContent = "Error saving settings.";
-        }
-        setTimeout(() => {
-            document.getElementById('status').textContent = "";
-        }, 1500);
+        ext.storage.sync.set({ subjectPrefix: prefix, emailService: service }, () => {
+            if (ext.runtime && ext.runtime.lastError) {
+                console.error("Failed to save options to storage.sync:", ext.runtime.lastError);
+                document.getElementById('status').textContent = "Error saving settings.";
+            } else {
+                document.getElementById('status').textContent = "Saved!";
+            }
+            setTimeout(() => {
+                document.getElementById('status').textContent = "";
+            }, 1500);
+        });
     });
 });

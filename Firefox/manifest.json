@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Page Mail",
   "version": "1.0.0",
   "description": "Send the current page by email with title, selected text, and URL.",
@@ -14,14 +14,14 @@
   "permissions": [
     "activeTab",
     "storage",
-    "management"
+    "scripting"
   ],
   "background": {
     "scripts": [
-      "background.js"
+      "service_worker.js"
     ]
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "images/icon-16.png",
       "32": "images/icon-32.png",
