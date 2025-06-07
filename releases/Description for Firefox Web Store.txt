@@ -1,4 +1,4 @@
-**Send the current page by Gmail®, Outlook®, or your system’s email app—with the page title, selected text, and URL—easily.**
+**Send the current page by your system’s email app (mailto:), Gmail® or Outlook®—with the page title, selected text, and URL—easily.**
 
 **Overview**  
 Page Mail is a simple yet powerful Firefox extension that lets you quickly compose an email message containing:  
@@ -6,17 +6,17 @@ Page Mail is a simple yet powerful Firefox extension that lets you quickly compo
 - Any text you’ve selected  
 - The page URL  
 
-Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Gmail®, Outlook®, and your system’s default email handler (mailto:).
+Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Email link handler (mailto:), Gmail®, and Outlook®.
 
 **Features**  
-- One-click sharing: Click the extension button to open Gmail®, Outlook®, or your system’s mail app with the page details pre-filled.  
+- One-click sharing: Click the extension button to open your system’s mail app (mailto:), Gmail® or Outlook® with the page details pre-filled.  
 - Keyboard shortcut: Use Ctrl+Alt+P (customizable) to open the extension popup.  
 - Selected text support: Highlight text on a page to include it in your email.  
 - Custom subject prefix: Personalize your email subject line via the options page.  
 - Syncs across devices: Your subject prefix and service choice are saved with your Firefox account.
 
 **Usage**  
-1. Choose your email provider (Gmail®, Outlook®, or Email link handler [mailto:]) in Options.  
+1. Choose your email provider (Email link handler [mailto:], Gmail® or Outlook®) in Options.  
 2. (Optional) Highlight text on the page to include it in your email.  
 3. Open the popup by clicking the extension icon or using Ctrl+Alt+P (customizable in about:addons → Manage Extension Shortcuts).  
 4. You must initiate sending from the new message popup.
@@ -24,7 +24,7 @@ Perfect for sharing articles, research, or anything you find online—right from
 **Options**  
 - Access the options page via the onboarding page, the extension’s context menu, or Firefox add-on manager (about:addons → Page Mail → Preferences).  
 - Set a subject prefix (e.g., “FYI: ”) to be added to every email subject.  
-- Choose Gmail®, Outlook®, or Email link handler (mailto:) as your preferred provider.  
+- Choose Email link handler (mailto:), Gmail® or Outlook® as your preferred provider.  
 - Settings sync with your Firefox account.
 
 **Configuring mailto:**  
@@ -44,7 +44,7 @@ To change your mailto: handler in Firefox, see:
 
 **Known Issues & Limitations**  
 - The extension cannot access special pages (e.g., about:, addons.mozilla.org).  
-- You must be logged in to your selected email service (Gmail®, Outlook®, or your chosen mailto: handler) in Firefox for Page Mail to work properly.  
+- You must be logged in to your selected email service (Email link handler [mailto:], Gmail® or Outlook®) in Firefox for Page Mail to work properly.  
 - The amount of selected text you can include is limited by the maximum URL length supported by browsers and the email providers. Large selections may be truncated or fail to open in the email composer.
 
 **FAQ**  
@@ -52,7 +52,7 @@ Q: Can I change the keyboard shortcut?
 A: Yes! Go to about:addons → Manage Extension Shortcuts.
 
 Q: Does this work with other email providers?  
-A: It supports Gmail®, Outlook®, and any app/service you configure as your mailto: handler in Firefox.
+A: It supports Email link handler (mailto:) in addition to Gmail® and Outlook®.
 
 Q: Is my browsing data sent anywhere?  
 A: No. The extension only opens your chosen email service with data you see; nothing is sent to third parties.
