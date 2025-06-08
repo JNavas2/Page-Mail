@@ -3,8 +3,6 @@
 Send the current web page by email—complete with title, selected text, and URL—   
 using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 
-© John Navas 2025, All Rights Reserved
-
 ---
 
 ## Features
@@ -103,8 +101,5 @@ For help, feature requests, or to report issues, visit the [Page Mail home page]
 
 ---
 
-## License
-
 © John Navas 2025, All Rights Reserved
-
 All trademarks are the property of their respective owners.
