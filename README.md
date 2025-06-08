@@ -8,13 +8,13 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 ## Features
 
 - Supports Chrome™, Edge™, and Firefox®
-- Sends current web page by email with one click, keyboard shortcut (configurable), or Android Extensions menu
-- Supports Email link handler (mailto:), Gmail® or Outlook®
+- Sends current web page by email with one click, keyboard shortcut (configurable), or Extensions menu
+- Supports Email link handler (mailto:), Gmail® and Outlook®
 - Both desktop and Android™ are supported on Firefox
 - Optionally include a Subject prefix
 - Includes selected text (if any) and the page URL in the email body
 - Clean, modern onboarding and options pages
-- No tracking, no ads, and no data collection
+- No tracking, no ads, no data collection
 
 ---
 
@@ -27,7 +27,7 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 
 ## Usage
 
-- Use the Page Mail toolbar button, the keyboard shortcut, or Android Extensions menu.
+- Use the Page Mail toolbar button, the keyboard shortcut, or Extensions menu.
 - A new email compose window will open in your chosen service, Email link handler (mailto:), Gmail® or Outlook®.
 - The email will include:
   - The page title in the subject (with optional prefix)
@@ -38,10 +38,10 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 
 ## Options
 
-- Open the extension’s Options page (from the extension’s context menu or the Add-ons Manager) to:
+- Open the extension’s Options page (from the extension’s context menu or the browser extentions manager) to:
   - Set a custom subject prefix (optional)
   - Choose your email service: Email link handler (mailto:), Gmail® or Outlook®
-- Changes are saved and can sync across devices given browser sync support.
+- Changes are saved and can sync across devices.
 
 ---
 
@@ -76,15 +76,15 @@ A: Only text you’ve actively selected on the page will be included. If nothing
 ## Known Issues
 
 - Page Mail cannot work on internal pages (e.g., about:, chrome:, edge:) due to browser security restrictions.
-- Some web mail services may require you to be logged in before composing a message.
+- Mail services may require you to be logged in before composing a message.
 - Email link handler (mailto:) uses your browser settings; see [Configuring mailto](#configuring-mailto) above.
 
 ---
 
 ## Privacy
 
-Page Mail does **not** collect or transmit any personal data.  
-No tracking, no analytics, no ads—just email your pages, privately.
+- Page Mail does **not** collect or transmit any personal data.  
+- No tracking, no analytics, no ads—just email your pages.
 
 ---
 
