@@ -6,10 +6,10 @@ Page Mail is a simple yet powerful extension that lets you quickly compose an em
 - Any text you’ve selected  
 - The page URL  
 
-Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Email link handler (mailto:), Gmail®, and Outlook®.
+Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Email link handler (mailto:), Gmail® and Outlook®.
 
 FEATURES  
-- One-click sharing: Click the extension button to open your system’s mail app (mailto:), Gmail® or Outlook® with the page details pre-filled.  
+- One-click sharing: Click the extension button to open your system’s Email link handler (mailto:), Gmail® or Outlook® with the page details pre-filled.  
 - Keyboard shortcut: Use Ctrl+Alt+P (customizable) to open the extension popup.  
 - Selected text support: Highlight text on a page to include it in your email.  
 - Custom subject prefix: Personalize your email subject line via the options page.  
@@ -35,11 +35,12 @@ To change your mailto: handler in browser, see:
 
 PRIVACY & PERMISSIONS  
 - No tracking. No data collection.  
-- Permissions: activeTab, storage, management.  
+- Permissions: activeTab, storage, scripting.  
 - Open source: View code at https://github.com/JNavas2/Page-Mail
 
 COMPATIBILITY  
 - Currently available for Firefox, Chrome and Edge.
+- Both desktop and Android™ are supported on Firefox.
 
 KNOWN ISSUES & LIMITATIONS  
 - The extension cannot access special pages (e.g., about:, chrome:, edge:).  
@@ -56,8 +57,12 @@ A: It supports Email link handler (mailto:) in addition to Gmail® and Outlook®
 Q: Is my browsing data sent anywhere?  
 A: No. The extension only opens your chosen email service with data you see; nothing is sent to third parties.
 
-Support  
+SUPPORT  
 For questions, suggestions, or bug reports, please open an Issue: https://github.com/JNavas2/Page-Mail/issues
+
+DISCLAIMERS
+- This extension is not affiliated with or endorsed by Google, Mozilla, Microsoft or Apple.
+- THIS SOFTWARE IS PROVIDED “AS IS,” WITHOUT WARRANTY OF ANY KIND. USE AT YOUR OWN RISK. NOT RESPONSIBLE FOR ERRORS, OMISSIONS OR DAMAGES. BY INSTALLING OR USING THIS EXTENSION, YOU AGREE TO THESE TERMS.
 
 Enjoy fast, private sharing with Page Mail!
 
