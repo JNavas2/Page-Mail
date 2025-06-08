@@ -101,5 +101,5 @@ For help, feature requests, or to report issues, visit the [Page Mail home page]
 
 ---
 
-© John Navas 2025, All Rights Reserved
+© John Navas 2025, All Rights Reserved   
 All trademarks are the property of their respective owners.
