@@ -14,6 +14,7 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 - Optionally include a Subject prefix
 - Includes selected text (if any) and the page URL in the email body
 - Clean, modern onboarding and options pages
+- Open source: View the source at [Page Mail home](https://github.com/JNavas2/Page-Mail)
 - No tracking, no ads, no data collection
 
 ---
@@ -90,7 +91,7 @@ A: Only text you’ve actively selected on the page will be included. If nothing
 
 ## Support
 
-For help, feature requests, or to report issues, visit the [Page Mail home page](https://github.com/JNavas2/Page-Mail).
+For help, feature requests, or to report issues, visit the [Page Mail home](https://github.com/JNavas2/Page-Mail).
 
 ---
 
@@ -101,5 +102,7 @@ For help, feature requests, or to report issues, visit the [Page Mail home page]
 
 ---
 
+## License
+[MIT License](LICENSE).
 © John Navas 2025, All Rights Reserved   
 All trademarks are the property of their respective owners.
