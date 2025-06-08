@@ -103,6 +103,6 @@ For help, feature requests, or to report issues, visit the [Page Mail home](http
 ---
 
 ## License
-[MIT License](LICENSE).
+[MIT License](LICENSE).   
 © John Navas 2025, All Rights Reserved   
 All trademarks are the property of their respective owners.
