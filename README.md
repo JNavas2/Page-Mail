@@ -9,7 +9,7 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 
 - Supports Chrome™, Edge™, and Firefox®
 - Sends current web page by email with one click, keyboard shortcut (configurable), or Extensions menu
-- Supports Email link handler (mailto:), Gmail® and Outlook®
+- Supports Email link handler (mailto:), Gmail and Outlook
 - Both desktop and Android™ are supported on Firefox
 - Optionally include a Subject prefix
 - Includes selected text (if any) and the page URL in the email body
