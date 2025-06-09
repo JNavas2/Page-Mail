@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Page Mail",
   "version": "1.0.0",
   "description": "Send the current page by email with title, selected text, and URL.",
@@ -13,14 +13,13 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "scripting"
   ],
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "service_worker.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "images/icon-16.png",
       "32": "images/icon-32.png",
@@ -29,14 +28,14 @@
       "96": "images/icon-96.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "Page Mail: Send web page by email"
+    "default_title": "Page Mail: Send page by email"
   },
   "commands": {
     "open-page-mail-popup": {
       "suggested_key": {
-        "default": "Ctrl+Alt+P"
+        "default": "Shift+Alt+P"
       },
-      "description": "Open Page Mail new email"
+      "description": "Open the Page Mail new message popup"
     }
   },
   "browser_specific_settings": {
