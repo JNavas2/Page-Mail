@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "Page Mail",
+  "version": "0.9.1",
+  "description": "Send the current page by email with title, selected text, and URL.",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "64": "images/icon-64.png",
+    "96": "images/icon-96.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "64": "images/icon-64.png",
+      "96": "images/icon-96.png",
+      "128": "images/icon-128.png"
+    },
+    "default_title": "Page Mail: Send web page by email"
+  },
+  "commands": {
+    "open-page-mail-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+P"
+      },
+      "description": "Open Page Mail new email"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "Page-Mail-JNavas2@github.com"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}

@@ -1,5 +1,5 @@
 /*
-  background.js for Page Mail Extension (MV3)
+  service_worker.js for Page Mail Extension (MV3)
   © John Navas 2025, All Rights Reserved
 */
 
@@ -61,13 +61,21 @@ async function openComposeWindow() {
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
-        // Open the compose window in a new popup window
-        await ext.windows.create({
-            url: composeUrl,
-            type: "popup",
-            width: 800,
-            height: 600
-        });
+        // Detect Android (user agent check)
+        const isAndroid = typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent);
+
+        if (isAndroid) {
+            // On Android, use window.open() for all cases (opens in a new tab)
+            window.open(composeUrl, "_blank");
+        } else {
+            // On desktop, open as a popup window
+            await ext.windows.create({
+                url: composeUrl,
+                type: "popup",
+                width: 800,
+                height: 600
+            });
+        }
     } catch (error) {
         console.error("Page Mail: Failed to open compose window:", error);
         // Show a popup window with an error explanation
