@@ -33,9 +33,9 @@
   "commands": {
     "open-page-mail-popup": {
       "suggested_key": {
-        "default": "Ctrl+Alt+P"
+        "default": "Alt+Shift+P"
       },
-      "description": "Open the Page Mail new message popup"
+      "description": "Open Page Mail new message popup"
     }
   },
   "browser_specific_settings": {
