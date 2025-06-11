@@ -1,77 +1,41 @@
-/*
-  options.js for Page Mail Firefox Extension
-  © John Navas 2025, All Rights Reserved
-  Manages the options page for the extension.
-*/
+// options.js for Page Mail Extension
+// © John Navas 2025, All Rights Reserved
 
-function getStorage() {
-    // Use storage.sync if available, otherwise storage.local
-    return (browser.storage && browser.storage.sync) ? browser.storage.sync : browser.storage.local;
+const ext = typeof browser !== "undefined" ? browser : chrome;
+
+// Restore options on page load
+function restoreOptions() {
+    ext.storage.sync.get(
+        ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
+        data => {
+            document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
+            (document.querySelector(`input[name="emailService"][value="${data.emailService || 'mailto'}"]`) || {}).checked = true;
+            (document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`) || {}).checked = true;
+            document.getElementById('blankLine').checked = !!data.blankLine;
+        }
+    );
 }
 
-// Helper to show error.html in a popup window
-function showErrorPopup() {
-    browser.windows.create({
-        url: browser.runtime.getURL("error.html"),
-        type: "popup",
-        width: 540,
-        height: 270
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const storage = getStorage();
-
-    // --- Android-only: disable Gmail and Outlook radio buttons ---
-    if (/Android/i.test(navigator.userAgent)) {
-        document.getElementById('serviceGmail').disabled = true;
-        document.getElementById('serviceOutlook').disabled = true;
-        // Optionally, gray out the labels for clarity
-        document.querySelector('label[for="serviceGmail"]').style.color = "#aaa";
-        document.querySelector('label[for="serviceOutlook"]').style.color = "#aaa";
-    }
-
-    // Load subjectPrefix and emailService from storage
-    storage.get(['subjectPrefix', 'emailService']).then((data) => {
-        document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
-        const service = data.emailService || "handler";
-
-        // If on Android, always select handler
-        if (/Android/i.test(navigator.userAgent)) {
-            document.getElementById('serviceHandler').checked = true;
-        } else {
-            document.getElementById('serviceHandler').checked = (service === "handler");
-            document.getElementById('serviceGmail').checked = (service === "gmail");
-            document.getElementById('serviceOutlook').checked = (service === "outlook");
-        }
-    }).catch(error => {
-        console.error("Failed to load options from storage:", error);
-        // Show error popup
-        showErrorPopup();
-    });
-
-    document.getElementById('save').addEventListener('click', async () => {
-        let prefix = document.getElementById('subjectPrefix').value;
-        let service;
-        if (/Android/i.test(navigator.userAgent)) {
-            service = "handler";
-        } else {
-            service = document.getElementById('serviceHandler').checked
-                ? "handler"
-                : document.getElementById('serviceGmail').checked
-                    ? "gmail"
-                    : "outlook";
-        }
-        try {
-            await storage.set({ subjectPrefix: prefix, emailService: service });
-            document.getElementById('status').textContent = "Saved!";
-        } catch (error) {
-            console.error("Failed to save options to storage:", error);
-            // Show error popup
-            showErrorPopup();
-        }
-        setTimeout(() => {
-            document.getElementById('status').textContent = "";
-        }, 1500);
+// Save options when the form is submitted
+document.querySelector('form.container').addEventListener('submit', function(e) {
+    e.preventDefault();
+    ext.storage.sync.set({
+        subjectPrefix: document.getElementById('subjectPrefix').value,
+        emailService: document.querySelector('input[name="emailService"]:checked').value,
+        selectedTextPos: document.querySelector('input[name="selectedTextPos"]:checked').value,
+        blankLine: document.getElementById('blankLine').checked
+    }, function() {
+        const status = document.getElementById('statusField');
+        status.textContent = ext.runtime && ext.runtime.lastError ? "Error saving settings." : "Saved!";
+        status.classList.add('has-status');
+        setTimeout(() => { status.textContent = ""; status.classList.remove('has-status'); }, 1500);
     });
 });
+
+// Open help page when Help button is clicked
+document.getElementById('helpBtn').addEventListener('click', function() {
+    window.open('https://github.com/JNavas2/Page-Mail', '_blank', 'noopener');
+});
+
+// Initialize options on load
+restoreOptions();

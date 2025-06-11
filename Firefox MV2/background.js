@@ -58,14 +58,31 @@ async function openComposeWindow() {
             code: "window.getSelection().toString();"
         });
 
-        // Get subject prefix and email service from storage
-        let { subjectPrefix, emailService } = await browser.storage.sync.get(['subjectPrefix', 'emailService']);
+        // Get subject prefix, email service, selectedTextPos, and blankLine from storage
+        let { subjectPrefix, emailService, selectedTextPos, blankLine } =
+            await browser.storage.sync.get(['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine']);
         subjectPrefix = subjectPrefix || "";
         emailService = emailService || "handler";
+        selectedTextPos = selectedTextPos || "above";
+        blankLine = !!blankLine;
 
-        // Build subject and body for the email
+        // Always use the plain URL as the link
+        let link = tab.url;
+
+        // Compose the email body
+        let body = "";
+        if (selectedText && selectedText.trim()) {
+            if (selectedTextPos === "above") {
+                body = selectedText + (blankLine ? "\n\n" : "\n") + link;
+            } else {
+                body = link + (blankLine ? "\n\n" : "\n") + selectedText;
+            }
+        } else {
+            body = link;
+        }
+
+        // Build subject
         let subject = `${subjectPrefix}${tab.title}`;
-        let body = selectedText ? `${selectedText}\n\n${tab.url}` : tab.url;
 
         // --- Android: use window.open for all services ---
         if (isAndroid()) {

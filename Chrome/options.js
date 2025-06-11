@@ -1,45 +1,37 @@
-/*
-  options.js for Page Mail Extension
-  © John Navas 2025, All Rights Reserved
-  Manages the options page for the extension.
-*/
+// options.js for Page Mail Extension
+// © John Navas 2025, All Rights Reserved
 
-// Polyfill for browser/chrome compatibility
 const ext = typeof browser !== "undefined" ? browser : chrome;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Load subjectPrefix and emailService from storage
-    ext.storage.sync.get(['subjectPrefix', 'emailService'], (data) => {
-        document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
-        const service = data.emailService || "handler";
-        if (service === "gmail") {
-            document.getElementById('serviceGmail').checked = true;
-        } else if (service === "outlook") {
-            document.getElementById('serviceOutlook').checked = true;
-        } else if (service === "handler") {
-            document.getElementById('serviceHandler').checked = true;
+    ext.storage.sync.get(
+        ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
+        data => {
+            document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
+            (document.querySelector(`input[name="emailService"][value="${data.emailService || 'mailto'}"]`) || {}).checked = true;
+            (document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`) || {}).checked = true;
+            document.getElementById('blankLine').checked = !!data.blankLine;
         }
-    });
+    );
 
-    document.getElementById('save').addEventListener('click', () => {
-        let prefix = document.getElementById('subjectPrefix').value;
-        let service = document.getElementById('serviceGmail').checked
-            ? "gmail"
-            : document.getElementById('serviceOutlook').checked
-                ? "outlook"
-                : document.getElementById('serviceHandler').checked
-                    ? "handler"
-                    : "gmail";
-        ext.storage.sync.set({ subjectPrefix: prefix, emailService: service }, () => {
-            if (ext.runtime && ext.runtime.lastError) {
-                console.error("Failed to save options to storage.sync:", ext.runtime.lastError);
-                document.getElementById('status').textContent = "Error saving settings.";
-            } else {
-                document.getElementById('status').textContent = "Saved!";
-            }
-            setTimeout(() => {
-                document.getElementById('status').textContent = "";
-            }, 1500);
+    document.querySelector('form.container').addEventListener('submit', e => {
+        e.preventDefault();
+        ext.storage.sync.set({
+            subjectPrefix: document.getElementById('subjectPrefix').value,
+            emailService: document.querySelector('input[name="emailService"]:checked').value,
+            selectedTextPos: document.querySelector('input[name="selectedTextPos"]:checked').value,
+            blankLine: document.getElementById('blankLine').checked
+        }, () => {
+            const status = document.getElementById('statusField');
+            status.textContent = ext.runtime && ext.runtime.lastError ? "Error saving settings." : "Saved!";
+            status.classList.add('has-status');
+            setTimeout(() => { status.textContent = ""; status.classList.remove('has-status'); }, 1500);
         });
     });
+
+    document.getElementById('helpBtn').onclick = function () {
+        window.open('https://github.com/JNavas2/Page-Mail', '_blank', 'noopener');
+    };
+
+    // No linkFormat logic needed anymore
 });

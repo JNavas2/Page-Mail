@@ -1,6 +1,7 @@
 /*
-  background.js for Page Mail Extension (MV3)
+  service_worker.js for Page Mail Extension (MV3)
   © John Navas 2025, All Rights Reserved
+  Handles background actions, including opening compose windows with user options.
 */
 
 // Use browser if available, otherwise chrome
@@ -34,30 +35,50 @@ async function openComposeWindow() {
             return;
         }
 
-        // Get subject prefix and email service from storage
+        // Get all user options from storage (linkFormat removed)
         const data = await new Promise((resolve, reject) => {
-            ext.storage.sync.get(['subjectPrefix', 'emailService'], (result) => {
-                if (ext.runtime && ext.runtime.lastError) {
-                    reject(ext.runtime.lastError);
-                } else {
-                    resolve(result);
+            ext.storage.sync.get(
+                ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
+                (result) => {
+                    if (ext.runtime && ext.runtime.lastError) {
+                        reject(ext.runtime.lastError);
+                    } else {
+                        resolve(result);
+                    }
                 }
-            });
+            );
         });
         const prefix = data.subjectPrefix || "";
-        const service = data.emailService || "handler";
+        const service = data.emailService || "mailto";
+        const selectedTextPos = data.selectedTextPos || "above";
+        const blankLine = !!data.blankLine;
 
-        // Build subject and body for the email
+        // Always use the plain URL as the link
+        let link = tab.url;
+
+        // Compose the email body
+        let body = "";
+        if (selectedText && selectedText.trim()) {
+            if (selectedTextPos === "above") {
+                body = selectedText + (blankLine ? "\n\n" : "\n") + link;
+            } else {
+                body = link + (blankLine ? "\n\n" : "\n") + selectedText;
+            }
+        } else {
+            body = link;
+        }
+
+        // Compose the subject
         const subject = `${prefix}${tab.title}`;
-        const body = selectedText ? `${selectedText}\n\n${tab.url}` : tab.url;
 
         // Build the compose URL for the selected service
         let composeUrl;
         if (service === "outlook") {
             composeUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        } else if (service === "handler") {
+        } else if (service === "mailto") {
             composeUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         } else {
+            // Gmail
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 

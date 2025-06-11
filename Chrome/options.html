@@ -1,164 +1,208 @@
-<!--
-  options.html for Page Mail Firefox Extension
-  © John Navas 2025, All Rights Reserved
--->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Page Mail Options</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            font-family: system-ui, Arial, sans-serif;
-            max-width: 420px;
-            margin: 40px auto;
-            padding: 24px;
-            background: #fafafa;
-            color: #222;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(60, 60, 60, 0.08);
-            text-align: center;
+            background: #f0f2f5;
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 8px 0;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 28px;
-            color: #16662d;
+        .container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1.5px 4px rgba(0, 0, 0, 0.06);
+            padding: 16px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 8px;
         }
 
-        .field-group {
-            margin-top: 24px;
+        .tight-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            gap: 8px;
         }
 
-        label,
-        .radio-label {
+        input[type="text"] {
+            flex: 1;
+            padding: 5px 8px;
             font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fafbfc;
+            min-width: 0;
         }
 
-        #subjectPrefix {
+        fieldset.radio-group {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 2px 12px 8px 12px;
+            margin-bottom: 6px;
+            background: #fafbfc;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        legend {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 4px;
+            padding: 0 8px;
+            background: #fff;
+            border-radius: 5px;
             margin-left: 8px;
         }
 
-        .radio-group {
-            margin-top: 24px;
+        .radio-options {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            margin-left: 2px;
         }
 
-        .service-box,
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            margin-top: 2px;
+            margin-left: 2px;
+            gap: 6px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: #4a90e2;
+        }
+
         .button-row {
-            width: 260px;
-            max-width: 100%;
-            margin: 12px 0 0 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .service-box {
-            border: 2px solid #e0e0e0;
-            background: #fffde7;
-            border-radius: 8px;
-            padding: 12px 0;
-            box-shadow: 0 2px 8px rgba(60, 60, 60, 0.06);
-        }
-
-        .radio-row {
             display: flex;
             align-items: center;
-            margin: 2px 0 4px 24px;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 3px 0 4px 0;
+            min-height: 36px;
         }
 
-        .help-row {
-            margin: 12px 0 0 0;
-            font-size: 0.98em;
-            color: #444;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Updated button-row styles for horizontal layout */
-        .button-row {
-            margin: 32px auto 0 auto;
-            width: 260px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        #save {
-            width: 80px;
-            background: #63a047;
-            color: #fff;
+        .button-row button {
+            padding: 6px 18px;
+            font-size: 1rem;
             border: none;
-            border-radius: 4px;
-            padding: 8px 0;
-            font-weight: bold;
+            border-radius: 6px;
+            background: #4a90e2;
+            color: #fff;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .button-row button:hover,
+        .button-row button:focus {
+            background: #1661a6;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(22, 97, 166, 0.18);
+            outline: none;
+        }
+
+        .status-field {
+            flex: 1;
             text-align: center;
+            font-size: 0.98rem;
+            color: #333;
+            background: transparent;
+            border: none;
+            min-height: 1.4em;
+            transition: color 0.2s;
         }
 
-        #save:hover {
-            background: #16662d;
+        .status-field.has-status {
+            color: #388e3c;
         }
 
-        /* Adjusted status to appear inline with button */
-        #status {
-            margin-left: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #16662d;
-            min-width: 80px;
-        }
-
-        .trademark-note {
-            margin-top: 24px;
+        .footer {
+            text-align: center;
+            font-size: 0.88rem;
             color: #888;
-            font-size: 0.92em;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            color: #222;
+        }
+
+        label {
+            font-size: 0.97rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* --- Responsive fix for mobile/Android --- */
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 0;
+                box-shadow: none;
+                padding: 8px 2vw;
+                margin: 0;
+            }
+        }
+
+        /* --- Centered, max-width for desktop (Chrome) --- */
+        @media (min-width: 481px) {
+            .container {
+                max-width: 420px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
-    <script src="options.js"></script>
 </head>
 
 <body>
-    <h1>Options for Page Mail</h1>
-    <div class="field-group">
-        <label for="subjectPrefix">Subject Prefix (opt.):</label>
-        <input type="text" id="subjectPrefix" />
-    </div>
-    <div class="field-group radio-group">
-        <span class="radio-label"><strong>Email Service:</strong></span>
-        <div class="service-box">
-            <div class="radio-row">
-                <input type="radio" id="serviceHandler" name="emailService" value="handler" checked>
-                <label for="serviceHandler">Email link handler (mailto:)</label>
-            </div>
-            <div class="radio-row">
-                <input type="radio" id="serviceGmail" name="emailService" value="gmail">
-                <label for="serviceGmail">Gmail&reg;</label>
-            </div>
-            <div class="radio-row">
-                <input type="radio" id="serviceOutlook" name="emailService" value="outlook">
-                <label for="serviceOutlook">Outlook&reg;</label>
-            </div>
-            <div class="help-row">
-                Get help <a href="https://github.com/JNavas2/Page-Mail" title="Open Page Mail home" target="_blank"
-                    rel="noopener noreferrer">here</a>.
-            </div>
+    <form class="container" autocomplete="off">
+        <h2>Page Mail Options</h2>
+        <div class="tight-row">
+            <label for="subjectPrefix">Subject prefix (opt):</label>
+            <input type="text" id="subjectPrefix" name="subjectPrefix" maxlength="60">
         </div>
-    </div>
-    <div class="button-row">
-        <button id="save" type="button">Save</button>
-        <div id="status"></div>
-    </div>
-    <div class="trademark-note">
-        All trademarks are the property of their respective owners.
-    </div>
+        <fieldset class="radio-group">
+            <legend>Email service:</legend>
+            <div class="radio-options">
+                <label><input type="radio" name="emailService" value="mailto" checked> Email link handler
+                    (mailto)</label>
+                <label><input type="radio" name="emailService" value="gmail"> Gmail<sup>®</sup> (desktop only)</label>
+                <label><input type="radio" name="emailService" value="outlook"> Outlook<sup>®</sup> (desktop
+                    only)</label>
+            </div>
+        </fieldset>
+        <fieldset class="radio-group">
+            <legend>Selected text (if any):</legend>
+            <div class="radio-options">
+                <label><input type="radio" name="selectedTextPos" value="above" checked> Above</label>
+                <label><input type="radio" name="selectedTextPos" value="below"> Below</label>
+            </div>
+            <div class="checkbox-row">
+                <input type="checkbox" id="blankLine" name="blankLine">
+                <label for="blankLine" style="font-weight:400;">Blank line separator</label>
+            </div>
+        </fieldset>
+        <div class="button-row">
+            <button type="submit" id="saveBtn">Save</button>
+            <div class="status-field" id="statusField"></div>
+            <button type="button" id="helpBtn">Help</button>
+        </div>
+        <div class="footer">
+            Trademarks belong to their respective owners.
+        </div>
+    </form>
+    <script src="options.js"></script>
 </body>
 
 </html>
