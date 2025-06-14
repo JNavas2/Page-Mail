@@ -15,6 +15,16 @@ const POPUP_HEIGHT = 600;
 const ERROR_POPUP_WIDTH = 540;
 const ERROR_POPUP_HEIGHT = 270;
 
+// Onboarding and Upboarding: show onboarding page in a new tab on both install and update
+browser.runtime.onInstalled.addListener((details) => {
+    console.log("[Page Mail] onInstalled:", details);
+    if (details.reason === "install" || details.reason === "update") {
+        browser.tabs.create({
+            url: browser.runtime.getURL("onboarding.html")
+        });
+    }
+});
+
 // Platform detection
 function isAndroid() {
     return /Android/i.test(navigator.userAgent);
@@ -141,14 +151,5 @@ browser.browserAction.onClicked.addListener(openComposeWindow);
 browser.commands.onCommand.addListener((command) => {
     if (command === "open-page-mail-popup") {
         openComposeWindow();
-    }
-});
-
-// Onboarding and Upboarding: show onboarding page in a new tab on both install and update
-browser.runtime.onInstalled.addListener((details) => {
-    if (details.reason === "install" || details.reason === "update") {
-        browser.tabs.create({
-            url: browser.runtime.getURL("onboarding.html")
-        });
     }
 });

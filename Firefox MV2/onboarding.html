@@ -3,11 +3,12 @@
   © John Navas 2025, All Rights Reserved
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <title>Welcome to Page Mail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             font-family: system-ui, Arial, sans-serif;
@@ -55,7 +56,7 @@
 
         ul {
             text-align: left;
-            margin: 0 auto 24px;
+            margin: 0 auto 12px;
             padding-left: 20px;
             max-width: 350px;
         }
@@ -110,9 +111,43 @@
         }
 
         .trademark-note {
-            margin-top: 24px;
+            margin-top: 12px;
             color: #888;
             font-size: 0.92em;
+        }
+
+        /* --- Responsive fix for mobile/Android --- */
+        @media (max-width: 480px) {
+            body {
+                max-width: 100vw;
+                margin: 0 12px;
+                padding: 10px 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .button-row {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .button-row button {
+                width: auto;
+                max-width: none;
+                margin: 0;
+                font-size: 1.05rem;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+
+            ul {
+                max-width: 100vw;
+                padding-left: 14px;
+            }
         }
     </style>
     <script src="onboarding.js"></script>
@@ -140,7 +175,8 @@
                     <b>help</b> <a href="https://github.com/JNavas2/Page-Mail" title="Open Page Mail home"
                         target="_blank" rel="noopener noreferrer">here</a>.
                 </li>
-                <li>For Gmail&reg; or Outlook&reg; (supported only on desktop, not Android), you must be logged in to your selected email service in your browser
+                <li>For Gmail&reg; or Outlook&reg; (supported only on desktop, not Android), you must be logged in to
+                    your selected email service in your browser
                     for Page Mail to work properly.</li>
             </ul>
         </li>
@@ -148,8 +184,11 @@
         <li>Remove the extension at any time.</li>
     </ul>
     <div class="button-row">
-        <button id="options">Options</button>
-        <button id="remove">Remove Extension</button>
+        <button id="options" aria-label="Open extension options">Options</button>
+        <button id="remove" aria-label="Remove this extension">Remove Extension</button>
+    </div>
+    <div id="android-options-note" style="display:none; font-size:1em; margin-top:18px;">
+        <strong>Note:</strong> For options, open Settings for Page Mail in the browser Extensions Manager.
     </div>
     <div class="trademark-note">
         All trademarks are the property of their respective owners.
