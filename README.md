@@ -7,7 +7,7 @@ using your system’s Email link handler (mailto:), Gmail® or Outlook®.
 
 ## Features
 
-- Supports Chrome™, Edge™ and other Chromium-based browsers. (Firefox® is not supported due to Mozilla policies.)
+- Supports Chrome™, Edge™ and other Chromium-based browsers.<br/>(Firefox® is not supported due to Mozilla policies.)
 - Sends current web page by email with one click, keyboard shortcut (configurable), or Extensions menu
 - Supports Email link handler (mailto:), Gmail and Outlook
 - Optionally include a Subject prefix
