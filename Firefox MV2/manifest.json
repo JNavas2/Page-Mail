@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Page Mail",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Send the current page by email with title, selected text, and URL.",
   "homepage_url": "https://github.com/JNavas2/Page-Mail",
   "privacy_policy": "https://jnavas2.github.io/Page-Mail/privacy.html",
