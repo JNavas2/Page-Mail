@@ -1,10 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Page Mail",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Send the current page by email with title, selected text, and URL.",
   "homepage_url": "https://github.com/JNavas2/Page-Mail",
-  "privacy_policy": "https://jnavas2.github.io/Page-Mail/privacy.html",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -13,10 +12,17 @@
     "96": "images/icon-96.png",
     "128": "images/icon-128.png"
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["whats_new.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "permissions": [
     "activeTab",
     "storage",
-    "scripting"
+    "scripting",
+    "offscreen"
   ],
   "background": {
     "service_worker": "service_worker.js"

@@ -8,7 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
         data => {
             document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
-            (document.querySelector(`input[name="emailService"][value="${data.emailService || 'mailto'}"]`) || {}).checked = true;
+
+            let service = data.emailService;
+            // Coalesce old values to the new single 'mailto' option for backward compatibility.
+            if (service === 'mailto_web' || service === 'mailto_app') {
+                service = 'mailto';
+            }
+            // Set the checked state for the email service radio button.
+            (document.querySelector(`input[name="emailService"][value="${service || 'mailto'}"]`) || {}).checked = true;
+
             (document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`) || {}).checked = true;
             document.getElementById('blankLine').checked = !!data.blankLine;
         }
@@ -25,13 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const status = document.getElementById('statusField');
             status.textContent = ext.runtime && ext.runtime.lastError ? "Error saving settings." : "Saved!";
             status.classList.add('has-status');
-            setTimeout(() => { status.textContent = ""; status.classList.remove('has-status'); }, 1500);
+            setTimeout(() => {
+                status.textContent = "";
+                status.classList.remove('has-status');
+            }, 1500);
         });
     });
 
     document.getElementById('helpBtn').onclick = function () {
         window.open('https://github.com/JNavas2/Page-Mail', '_blank', 'noopener');
     };
-
-    // No linkFormat logic needed anymore
 });

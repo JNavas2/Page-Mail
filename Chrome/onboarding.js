@@ -1,9 +1,6 @@
-/*
-  onboarding.js
-  © John Navas 2025, All Rights Reserved
-*/
+// onboarding.js
+// © John Navas 2025, All Rights Reserved
 
-// Polyfill for browser/chrome compatibility
 const ext = typeof browser !== "undefined" ? browser : chrome;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
             ext.management.uninstallSelf();
         });
     } else if (removeBtn) {
-        // Hide Remove button if management API is unavailable
         removeBtn.style.display = "none";
     }
+
+    // Load and display changes from whats_new.json
+    fetch(ext.runtime.getURL("whats_new.json"))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load what's new");
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.changes && Array.isArray(data.changes)) {
+                const list = document.getElementById("whatsNewList");
+                data.changes.forEach(change => {
+                    const li = document.createElement("li");
+                    li.textContent = change;
+                    list.appendChild(li);
+                });
+            }
+        })
+        .catch(err => {
+            console.warn("Could not load what's new:", err);
+            const section = document.getElementById("whatsNew");
+            if (section) {
+                section.style.display = "none";
+            }
+        });
 });
