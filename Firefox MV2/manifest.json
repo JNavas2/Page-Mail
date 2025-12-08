@@ -1,10 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Page Mail",
-  "version": "1.0.4",
+  "name": "Page Mail: Send web page by email",
+  "short_name": "Page Mail",
   "description": "Send the current page by email with title, selected text, and URL.",
+  "author": "John Navas",
+  "version": "1.1.0",
   "homepage_url": "https://github.com/JNavas2/Page-Mail",
   "privacy_policy": "https://jnavas2.github.io/Page-Mail/privacy.html",
+  "license": "MIT",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -31,7 +34,7 @@
       "96": "images/icon-96.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "Page Mail: Send web page by email"
+    "default_title": "Page Mail"
   },
   "commands": {
     "open-page-mail-popup": {
