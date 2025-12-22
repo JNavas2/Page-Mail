@@ -1,0 +1,50 @@
+title: "Page Mail issue"
+labels:
+  - support
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: "Select the operating system where you experience the issue."
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: email_service
+    attributes:
+      label: Email service
+      description: "Which email service are you using?"
+      options:
+        - Gmail
+        - Outlook.com
+        - Microsoft 365 (Exchange Online)
+        - Yahoo Mail
+        - iCloud Mail
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: client_name
+    attributes:
+      label: Email client (app) name
+      placeholder: "e.g. Firefox, Outlook 2024, Thunderbird, Gmail app on Android"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: Issue description
+      description: "Describe what you expected to happen and what actually happens."
+      placeholder: "Steps to reproduce, error messages, screenshots, etc."
+    validations:
+      required: true
