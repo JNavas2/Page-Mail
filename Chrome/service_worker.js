@@ -4,37 +4,22 @@
   Handles background actions, including opening compose windows with user options.
 */
 
+console.log("Page Mail Service Worker starting up...");
+
 const ext = typeof browser !== "undefined" ? browser : chrome;
-const OFFSCREEN_DOCUMENT_PATH = '/offscreen.html';
 
-// A helper function to find if an offscreen document is already open
-async function hasOffscreenDocument() {
-    const contexts = await ext.runtime.getContexts({
-        contextTypes: ['OFFSCREEN_DOCUMENT'],
-        documentUrls: [ext.runtime.getURL(OFFSCREEN_DOCUMENT_PATH)]
-    });
-    return contexts.length > 0;
-}
-
-// A helper function to create and use the offscreen document for mailto: links
-async function openMailtoInOffscreen(mailtoUrl) {
-    if (await hasOffscreenDocument()) {
-        await ext.offscreen.closeDocument();
-    }
-    
-    // Uses the CLIPBOARD reason as it is the most appropriate for triggering external actions
-    await ext.offscreen.createDocument({
-        url: OFFSCREEN_DOCUMENT_PATH + '#' + encodeURIComponent(mailtoUrl),
-        reasons: ['CLIPBOARD'], 
-        justification: 'To reliably open mailto: links from a service worker without leaving a blank window.',
-    });
-}
-
-// Core function to open the selected email service's compose window
+/**
+ * Core function to open the selected email service's compose window.
+ * Uses script injection for mailto: to ensure compatibility with Windows 11.
+ */
 async function openComposeWindow() {
+    console.log("Toolbar button clicked - initializing Page Mail...");
     try {
         const [tab] = await ext.tabs.query({ active: true, currentWindow: true });
-        if (!tab) throw new Error("No active tab found.");
+        if (!tab) {
+            console.error("No active tab found.");
+            return;
+        }
 
         let selectedText = "";
         try {
@@ -46,38 +31,24 @@ async function openComposeWindow() {
             if (results && results[0] && results[0].result) {
                 selectedText = results[0].result;
             }
-        } catch {
-            // If the script fails (e.g., on restricted chrome:// pages), 
-            // open the error page in a full tab for better reliability on Windows 11.
-            await ext.tabs.create({
-                url: ext.runtime.getURL("error.html")
-            });
+        } catch (e) {
+            // If the script fails (e.g., on restricted pages), show the error page
+            console.warn("Scripting blocked on this page. Opening error page.", e);
+            await ext.tabs.create({ url: ext.runtime.getURL("error.html") });
             return;
         }
 
         // Retrieve user preferences from storage
-        const data = await new Promise((resolve, reject) => {
-            ext.storage.sync.get(
-                ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
-                (result) => {
-                    if (ext.runtime && ext.runtime.lastError) {
-                        reject(ext.runtime.lastError);
-                    } else {
-                        resolve(result);
-                    }
-                }
-            );
-        });
-        
+        const data = await ext.storage.sync.get(['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine']);
+
         const prefix = data.subjectPrefix || "";
-        const service = data.emailService || "mailto"; // Matches options.html values
+        const service = data.emailService || "mailto";
         const selectedTextPos = data.selectedTextPos || "above";
         const blankLine = !!data.blankLine;
 
         let link = tab.url;
         let body = "";
-        
-        // Construct email body based on selection and placement settings
+
         if (selectedText && selectedText.trim()) {
             if (selectedTextPos === "above") {
                 body = selectedText + (blankLine ? "\n\n" : "\n") + link;
@@ -97,11 +68,10 @@ async function openComposeWindow() {
         } else if (service === "mailto") {
             composeUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         } else {
-            // Gmail is the fallback service
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
-        // Execution logic: Web-based vs System-based
+        // Execution logic
         if (service === "gmail" || service === "outlook") {
             // Webmail requires a popup window
             await ext.windows.create({
@@ -110,19 +80,29 @@ async function openComposeWindow() {
                 width: 800,
                 height: 600
             });
-        } else { 
-            // mailto: uses the offscreen document to prevent the "empty window" bug
-            await openMailtoInOffscreen(composeUrl);
+        } else {
+            // FIXED: Inject the mailto trigger directly into the active tab
+            // This treats the link as a user-initiated action from the page context.
+            console.log("Injecting mailto trigger into active tab...");
+            await ext.scripting.executeScript({
+                target: { tabId: tab.id },
+                func: (url) => {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                },
+                args: [composeUrl]
+            });
         }
     } catch (error) {
-        console.error("Page Mail: Failed to open compose window:", error);
-        await ext.tabs.create({
-            url: ext.runtime.getURL("error.html")
-        });
+        console.error("Page Mail Error:", error);
+        await ext.tabs.create({ url: ext.runtime.getURL("error.html") });
     }
 }
 
-// Event Listeners
+// Event Listeners (Must be at the top level)
 ext.action.onClicked.addListener(openComposeWindow);
 
 ext.commands.onCommand.addListener((command) => {
@@ -133,8 +113,6 @@ ext.commands.onCommand.addListener((command) => {
 
 ext.runtime.onInstalled.addListener((details) => {
     if (details.reason === "install" || details.reason === "update") {
-        ext.tabs.create({
-            url: ext.runtime.getURL("onboarding.html")
-        });
+        ext.tabs.create({ url: ext.runtime.getURL("onboarding.html") });
     }
 });

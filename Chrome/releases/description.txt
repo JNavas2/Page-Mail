@@ -1,4 +1,4 @@
-Send the current page by your system’s email app (mailto:), Gmail® or Outlook®—with the page title, selected text, and URL—easily.
+Send the current page by your system’s email app (mailto), Gmail® or Outlook®—with the page title, selected text, and URL—easily.
 
 OVERVIEW  
 Page Mail is a simple yet powerful extension that lets you quickly compose an email message containing:  
@@ -6,17 +6,21 @@ Page Mail is a simple yet powerful extension that lets you quickly compose an em
 - Any text you’ve selected  
 - The page URL  
 
-Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Email link handler (mailto:), Gmail® and Outlook®.
+Perfect for sharing articles, research, or anything you find online—right from your browser! Supports Email link handler (mailto), Gmail® and Outlook®.
+
+WHAT'S NEW
+- 1.1.1: Fix zombie window issue with Thunderbird
+- 1.1.0: Fix blank popup issue.
 
 FEATURES  
-- One-click sharing: Click the extension button to open your system’s Email link handler (mailto:), Gmail® or Outlook® with the page details pre-filled.  
+- One-click sharing: Click the extension button to open your system’s Email link handler (mailto), Gmail® or Outlook® with the page details pre-filled.  
 - Keyboard shortcut: Use Ctrl+Alt+P (customizable) to open the extension popup.  
 - Selected text support: Highlight text on a page to include it in your email.  
 - Custom subject prefix: Personalize your email subject line via the options page.  
 - Syncs across devices: Your subject prefix and service choice can be saved with your browser account.
 
 USAGE  
-1. Choose your email provider (Email link handler [mailto:], Gmail® or Outlook®) in Options.  
+1. Choose your email provider (Email link handler [mailto], Gmail® or Outlook®) in Options.  
 2. (Optional) Highlight text on the page to include it in your email.  
 3. Open the popup by clicking the extension icon or using Ctrl+Alt+P (customizable in browser's extension manager).  
 4. You must initiate sending from the new message popup.
@@ -24,14 +28,13 @@ USAGE
 OPTIONS  
 - Access the options page via the onboarding page, the extension’s context menu, or browser add-on manager.  
 - Set a subject prefix (e.g., “FYI: ”) to be added to every email subject.  
-- Choose Email link handler (mailto:), Gmail® or Outlook® as your preferred provider.  
+- Choose Email link handler (mailto), Gmail® or Outlook® as your preferred provider.  
 - Settings can sync with your browser account.
 
-CONFIGURING mailto:  
-When you select Email link handler (mailto:) in Page Mail’s options, the extension uses browser’s configured handler for `mailto:` links. This can be your operating system’s default email app or a webmail service (like Gmail or Outlook.com).
+CONFIGURING mailto  
+When you select Email link handler (mailto) in Page Mail’s options, the extension uses browser’s configured handler for `mailto` links. This can be your operating system’s default email app or a webmail service (like Gmail or Outlook.com).
 
-To change your mailto: handler in browser, see:  
-[How do I change my web browser's default email client for mailto links?](https://support.procore.com/faq/how-do-i-change-my-web-browsers-default-email-client-for-mailto-links)
+To change your mailto handler in browser, see: https://support.procore.com/faq/how-do-i-change-my-web-browsers-default-email-client-for-mailto-links
 
 PRIVACY & PERMISSIONS  
 - Page Mail does not collect or transmit any personal data.
@@ -45,7 +48,7 @@ COMPATIBILITY
 
 KNOWN ISSUES & LIMITATIONS  
 - The extension cannot access special pages (e.g., about:, chrome:, edge:).  
-- You must be logged in to your selected email service (Email link handler [mailto:], Gmail® or Outlook®) in the browser for Page Mail to work properly.  
+- You must be logged in to your selected email service (Email link handler [mailto], Gmail® or Outlook®) in the browser for Page Mail to work properly.  
 - The amount of selected text you can include is limited by the maximum URL length supported by browsers and email providers. Large selections may be truncated or fail to open in the email composer.
 
 FAQ  
@@ -53,7 +56,7 @@ Q: Can I change the keyboard shortcut?
 A: Yes! Use the browser's extension manager.
 
 Q: Does this work with other email providers?  
-A: It supports Email link handler (mailto:) in addition to Gmail® and Outlook®.
+A: It supports Email link handler (mailto) in addition to Gmail® and Outlook®.
 
 Q: Is my browsing data sent anywhere?  
 A: No. The extension only opens your chosen email service with data you see; nothing is sent to third parties.
