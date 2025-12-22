@@ -16,16 +16,17 @@ async function hasOffscreenDocument() {
     return contexts.length > 0;
 }
 
-// A helper function to create and use the offscreen document
+// A helper function to create and use the offscreen document for mailto: links
 async function openMailtoInOffscreen(mailtoUrl) {
     if (await hasOffscreenDocument()) {
         await ext.offscreen.closeDocument();
     }
     
+    // Uses the CLIPBOARD reason as it is the most appropriate for triggering external actions
     await ext.offscreen.createDocument({
         url: OFFSCREEN_DOCUMENT_PATH + '#' + encodeURIComponent(mailtoUrl),
-        reasons: ['CLIPBOARD'], // CORRECTED REASON
-        justification: 'To reliably open mailto: links from a service worker.',
+        reasons: ['CLIPBOARD'], 
+        justification: 'To reliably open mailto: links from a service worker without leaving a blank window.',
     });
 }
 
@@ -37,6 +38,7 @@ async function openComposeWindow() {
 
         let selectedText = "";
         try {
+            // Attempt to get selected text from the page
             const results = await ext.scripting.executeScript({
                 target: { tabId: tab.id },
                 func: () => window.getSelection().toString()
@@ -45,15 +47,15 @@ async function openComposeWindow() {
                 selectedText = results[0].result;
             }
         } catch {
-            await ext.windows.create({
-                url: ext.runtime.getURL("error.html"),
-                type: "popup",
-                width: 540,
-                height: 270
+            // If the script fails (e.g., on restricted chrome:// pages), 
+            // open the error page in a full tab for better reliability on Windows 11.
+            await ext.tabs.create({
+                url: ext.runtime.getURL("error.html")
             });
             return;
         }
 
+        // Retrieve user preferences from storage
         const data = await new Promise((resolve, reject) => {
             ext.storage.sync.get(
                 ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
@@ -66,14 +68,16 @@ async function openComposeWindow() {
                 }
             );
         });
+        
         const prefix = data.subjectPrefix || "";
-        const service = data.emailService || "mailto";
+        const service = data.emailService || "mailto"; // Matches options.html values
         const selectedTextPos = data.selectedTextPos || "above";
         const blankLine = !!data.blankLine;
 
         let link = tab.url;
-
         let body = "";
+        
+        // Construct email body based on selection and placement settings
         if (selectedText && selectedText.trim()) {
             if (selectedTextPos === "above") {
                 body = selectedText + (blankLine ? "\n\n" : "\n") + link;
@@ -93,38 +97,40 @@ async function openComposeWindow() {
         } else if (service === "mailto") {
             composeUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         } else {
-            // Gmail is the default
+            // Gmail is the fallback service
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
-        // Opening compose window logic
+        // Execution logic: Web-based vs System-based
         if (service === "gmail" || service === "outlook") {
+            // Webmail requires a popup window
             await ext.windows.create({
                 url: composeUrl,
                 type: "popup",
                 width: 800,
                 height: 600
             });
-        } else { // Covers "mailto"
+        } else { 
+            // mailto: uses the offscreen document to prevent the "empty window" bug
             await openMailtoInOffscreen(composeUrl);
         }
     } catch (error) {
         console.error("Page Mail: Failed to open compose window:", error);
-        await ext.windows.create({
-            url: ext.runtime.getURL("error.html"),
-            type: "popup",
-            width: 400,
-            height: 320
+        await ext.tabs.create({
+            url: ext.runtime.getURL("error.html")
         });
     }
 }
 
+// Event Listeners
 ext.action.onClicked.addListener(openComposeWindow);
+
 ext.commands.onCommand.addListener((command) => {
     if (command === "open-page-mail-popup") {
         openComposeWindow();
     }
 });
+
 ext.runtime.onInstalled.addListener((details) => {
     if (details.reason === "install" || details.reason === "update") {
         ext.tabs.create({

@@ -3,12 +3,10 @@
 
 const ext = typeof browser !== "undefined" ? browser : chrome;
 
-// Use storage.sync if available, else storage.local
 function getStorage() {
     return (ext.storage && ext.storage.sync) ? ext.storage.sync : ext.storage.local;
 }
 
-// Show error.html in a popup window (optional, as in old version)
 function showErrorPopup() {
     if (ext.windows && ext.runtime && ext.runtime.getURL) {
         ext.windows.create({
@@ -20,7 +18,6 @@ function showErrorPopup() {
     }
 }
 
-// Platform check for Android
 const isAndroid = /Android/i.test(navigator.userAgent);
 
 function restoreOptions() {
@@ -29,22 +26,28 @@ function restoreOptions() {
         ['subjectPrefix', 'emailService', 'selectedTextPos', 'blankLine'],
         data => {
             document.getElementById('subjectPrefix').value = data.subjectPrefix || "";
-            // Platform-specific logic
+
+            // Migration: Convert legacy 'handler' value to 'mailto'
             let service = data.emailService || 'mailto';
+            if (service === 'handler') service = 'mailto';
+
             if (isAndroid) {
                 service = 'mailto';
-                // Disable Gmail/Outlook radios
                 document.querySelector('input[name="emailService"][value="gmail"]').disabled = true;
                 document.querySelector('input[name="emailService"][value="outlook"]').disabled = true;
-                // Gray out labels
                 document.querySelectorAll('input[name="emailService"]').forEach(input => {
                     if (input.value === 'gmail' || input.value === 'outlook') {
                         input.parentElement.style.color = "#aaa";
                     }
                 });
             }
-            (document.querySelector(`input[name="emailService"][value="${service}"]`) || {}).checked = true;
-            (document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`) || {}).checked = true;
+
+            const serviceRadio = document.querySelector(`input[name="emailService"][value="${service}"]`);
+            if (serviceRadio) serviceRadio.checked = true;
+
+            const posRadio = document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`);
+            if (posRadio) posRadio.checked = true;
+
             document.getElementById('blankLine').checked = !!data.blankLine;
         }
     );
@@ -54,7 +57,7 @@ document.querySelector('form.container').addEventListener('submit', function (e)
     e.preventDefault();
     const storage = getStorage();
     let service = document.querySelector('input[name="emailService"]:checked').value;
-    if (isAndroid) service = 'mailto'; // Force mailto on Android
+    if (isAndroid) service = 'mailto';
     storage.set({
         subjectPrefix: document.getElementById('subjectPrefix').value,
         emailService: service,
@@ -73,10 +76,8 @@ document.querySelector('form.container').addEventListener('submit', function (e)
     });
 });
 
-// Open help page when Help button is clicked
 document.getElementById('helpBtn').addEventListener('click', function () {
     window.open('https://github.com/JNavas2/Page-Mail', '_blank', 'noopener');
 });
 
-// Initialize options on load
 restoreOptions();
