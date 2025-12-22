@@ -1,1 +1,65 @@
+title: "Email issue: <short description>"
+description: "Please fill in the details below so we can help you faster."
+labels:
+  - support
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: "Select the operating system where you experience the issue."
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+        - Other
+    validations:
+      required: true
 
+  - type: dropdown
+    id: email_service
+    attributes:
+      label: Email service
+      description: "Which email service are you using?"
+      options:
+        - Gmail
+        - Outlook.com
+        - Microsoft 365 (Exchange Online)
+        - Yahoo Mail
+        - iCloud Mail
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client_type
+    attributes:
+      label: Using browser or app?
+      description: "How are you accessing your email?"
+      options:
+        - Web browser
+        - Desktop app
+        - Mobile app
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: client_name
+    attributes:
+      label: Browser or app name
+      description: "For example: Chrome, Firefox, Outlook desktop, Apple Mail, Gmail app."
+      placeholder: "e.g. Chrome 131, Outlook 2024, Gmail app on Android 15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: Issue description
+      description: "Describe what you expected to happen and what actually happens."
+      placeholder: "Steps to reproduce, error messages, screenshots, etc."
+    validations:
+      required: true
