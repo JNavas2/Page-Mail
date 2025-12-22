@@ -1,4 +1,4 @@
-title: "Email issue: <short description>"
+title: "Page Mail issue"
 labels:
   - support
 body:
@@ -32,25 +32,11 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: client_type
-    attributes:
-      label: Using browser or app?
-      description: "How are you accessing your email?"
-      options:
-        - Web browser
-        - Desktop app
-        - Mobile app
-        - Other
-    validations:
-      required: true
-
   - type: input
     id: client_name
     attributes:
-      label: Browser or app name
-      description: "For example: Chrome, Firefox, Outlook desktop, Apple Mail, Gmail app."
-      placeholder: "e.g. Chrome 131, Outlook 2024, Gmail app on Android 15"
+      label: Email client (app) name
+      placeholder: "e.g. Firefox, Outlook 2024, Thunderbird, Gmail app on Android"
     validations:
       required: true
 
