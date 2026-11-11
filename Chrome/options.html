@@ -179,7 +179,8 @@
         <fieldset class="radio-group">
             <legend>Email service:</legend>
             <div class="radio-options">
-                <label><input type="radio" name="emailService" value="mailto" checked> Default Email Handler (mailto)</label>
+                <label><input type="radio" name="emailService" value="mailto" checked> Default Email Handler
+                    (mailto)</label>
                 <label><input type="radio" name="emailService" value="gmail"> Gmail<sup>®</sup> (desktop only)</label>
                 <label><input type="radio" name="emailService" value="outlook"> Outlook<sup>®</sup> (desktop
                     only)</label>
@@ -192,7 +193,8 @@
                 <label><input type="radio" name="selectedTextPos" value="below"> Below</label>
             </div>
             <div class="checkbox-row">
-                <input type="checkbox" id="blankLine" name="blankLine">
+                <!-- Default state is checked; seeded via service_worker.js onInstalled -->
+                <input type="checkbox" id="blankLine" name="blankLine" checked>
                 <label for="blankLine" style="font-weight:400;">Blank line separator</label>
             </div>
         </fieldset>

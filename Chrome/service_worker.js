@@ -44,7 +44,9 @@ async function openComposeWindow() {
         const prefix = data.subjectPrefix || "";
         const service = data.emailService || "mailto";
         const selectedTextPos = data.selectedTextPos || "above";
-        const blankLine = !!data.blankLine;
+
+        // Defaults to ON (true) unless the user explicitly saved it as OFF (false)
+        const blankLine = data.blankLine !== false;
 
         let link = tab.url;
         let body = "";

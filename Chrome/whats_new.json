@@ -1,5 +1,6 @@
 {
   "changes": [
-    "Fixed possible zombie window"
+    "Support Microsoft Edge on Android.",
+    "Change Blank line default to True."
   ]
 }

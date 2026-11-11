@@ -14,11 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
             if (service === 'mailto_web' || service === 'mailto_app') {
                 service = 'mailto';
             }
+
+            const isAndroid = /\bAndroid\b/i.test(navigator.userAgent);
+
+            // Disable desktop-only email services on Android
+            if (isAndroid) {
+                const gmailRadio = document.querySelector('input[name="emailService"][value="gmail"]');
+                const outlookRadio = document.querySelector('input[name="emailService"][value="outlook"]');
+                if (gmailRadio) gmailRadio.disabled = true;
+                if (outlookRadio) outlookRadio.disabled = true;
+
+                // Force fallback to mailto if user syncs an unsupported service to mobile
+                if (service === 'gmail' || service === 'outlook') {
+                    service = 'mailto';
+                }
+            }
+
             // Set the checked state for the email service radio button.
             (document.querySelector(`input[name="emailService"][value="${service || 'mailto'}"]`) || {}).checked = true;
 
             (document.querySelector(`input[name="selectedTextPos"][value="${data.selectedTextPos || 'above'}"]`) || {}).checked = true;
-            document.getElementById('blankLine').checked = !!data.blankLine;
+
+            // Only override the HTML default if a user explicitly saved a preference
+            if (data.blankLine !== undefined) {
+                document.getElementById('blankLine').checked = data.blankLine;
+            }
         }
     );
 
