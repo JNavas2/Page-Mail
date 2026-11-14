@@ -10,7 +10,8 @@ const ext = typeof browser !== "undefined" ? browser : chrome;
 
 /**
  * Core function to open the selected email service's compose window.
- * Uses script injection for mailto: to ensure compatibility with Windows 11.
+ * Uses script injection for mailto: to ensure compatibility with Windows 11
+ * and direct external intent handling on Edge for Android.
  */
 async function openComposeWindow() {
     console.log("Toolbar button clicked - initializing Page Mail...");
@@ -73,6 +74,8 @@ async function openComposeWindow() {
             composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
+        const isAndroid = /\bAndroid\b/i.test(navigator.userAgent);
+
         // Execution logic
         if (service === "gmail" || service === "outlook") {
             // Webmail requires a popup window
@@ -83,19 +86,26 @@ async function openComposeWindow() {
                 height: 600
             });
         } else {
-            // FIXED: Inject the mailto trigger directly into the active tab
-            // This treats the link as a user-initiated action from the page context.
+            // Inject the mailto trigger directly into the active tab
             console.log("Injecting mailto trigger into active tab...");
             await ext.scripting.executeScript({
                 target: { tabId: tab.id },
-                func: (url) => {
+                func: (url, checkRepeat) => {
+                    if (checkRepeat) {
+                        if (window.__pageMailInvoked) {
+                            alert("Reload page to retry Page Mail.");
+                            return;
+                        }
+                        window.__pageMailInvoked = true;
+                    }
+
                     const link = document.createElement('a');
                     link.href = url;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                 },
-                args: [composeUrl]
+                args: [composeUrl, isAndroid]
             });
         }
     } catch (error) {
